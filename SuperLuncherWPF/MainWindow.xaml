@@ -19,12 +19,21 @@
                 <Setter Property="Width" Value="70" />
             </Style>
         </Canvas.Resources>
-        <DockPanel VerticalAlignment="Top" Height="30" Background="#FF1D1D1D" Width="1280" Canvas.Top="0">
-            <Button Background="#FFC01D1D" Click="Exit_Click">X</Button>
-            <Button Background="#FF494949" Click="Fullscreen_Click">F</Button>
-            <Button Background="#FF1D1D1D" Click="Minimize_Click">M</Button>
-        </DockPanel>
+        <Grid VerticalAlignment="Top" Height="30" Background="#FF1D1D1D" Width="1280" Canvas.Top="0" HorizontalAlignment="Stretch" MouseDown="DockPanel_MouseDown">
+            <Label Loaded="Top_Title" HorizontalAlignment="Center" Foreground="White" Padding="0,0,3,0" Background="Transparent" VerticalAlignment="Center" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18">Super Launcher</Label>
+            <DockPanel>
+                <Button Background="#FFC01D1D" Click="Exit_Click">
+                    <Image Source="Resources/X.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+                <Button Background="#FF494949" Click="Fullscreen_Click">
+                    <Image Source="Resources/Fullscreen.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+                <Button Background="#FF1D1D1D" Click="Minimize_Click">
+                    <Image Source="Resources/MinMax.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+            </DockPanel>
+        </Grid>
         <DockPanel VerticalAlignment="Bottom" Height="738" Background="#FF222222" Width="318" HorizontalAlignment="Left" Canvas.Top="30"/>
-        <DockPanel VerticalAlignment="Bottom" Height="738" Background="#FF222222" Width="957" HorizontalAlignment="Left" Canvas.Top="30" Canvas.Left="323"/>
+        <DockPanel VerticalAlignment="Bottom" Height="738" Background="#FF3F3F3F" Width="957" HorizontalAlignment="Left" Canvas.Top="30" Canvas.Left="323"/>
     </Canvas>
 </Window>

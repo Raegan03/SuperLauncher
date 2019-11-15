@@ -39,5 +39,17 @@ namespace SuperLuncherWPF
         {
             WindowState = WindowState.Minimized;
         }
+
+        private void Top_Title(object sender, RoutedEventArgs e)
+        {
+            var label = sender as Label;
+            label.Content = Application.Current.MainWindow.Title;
+        }
+
+        private void DockPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
     }
 }
