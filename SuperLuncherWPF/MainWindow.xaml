@@ -1,9 +1,30 @@
-﻿<NavigationWindow  x:Class="SuperLuncherWPF.MainWindow"
+﻿<Window  x:Class="SuperLuncherWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SuperLuncherWPF"
         mc:Ignorable="d"
-        Title="SuperLuncher" Height="350" Width="500">
-</NavigationWindow>
+        Title="SuperLuncher" Height="768" Width="1280" WindowStyle="None" Background="#FF222222" Margin="0" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize">
+    <Canvas Width="1280" Height="768">
+        <Canvas.Resources>
+            <Style TargetType="Button">
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="DockPanel.Dock" Value="Right" />
+                <Setter Property="Foreground" Value="#FFFFFFFF" />
+                <Setter Property="Height" Value="30" />
+                <Setter Property="Width" Value="70" />
+            </Style>
+        </Canvas.Resources>
+        <DockPanel VerticalAlignment="Top" Height="30" Background="#FF1D1D1D" Width="1280" Canvas.Top="0">
+            <Button Background="#FFC01D1D" Click="Exit_Click">X</Button>
+            <Button Background="#FF494949" Click="Fullscreen_Click">F</Button>
+            <Button Background="#FF1D1D1D" Click="Minimize_Click">M</Button>
+        </DockPanel>
+        <DockPanel VerticalAlignment="Bottom" Height="738" Background="#FF222222" Width="318" HorizontalAlignment="Left" Canvas.Top="30"/>
+        <DockPanel VerticalAlignment="Bottom" Height="738" Background="#FF222222" Width="957" HorizontalAlignment="Left" Canvas.Top="30" Canvas.Left="323"/>
+    </Canvas>
+</Window>
