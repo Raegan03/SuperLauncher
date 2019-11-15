@@ -94,5 +94,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Fullscreen.png" />
+    <Resource Include="Resources\MinMax.png" />
+    <Resource Include="Resources\X.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
