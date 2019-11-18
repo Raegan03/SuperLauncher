@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SuperLauncherWPF"
         mc:Ignorable="d"
-        Title="SuperLauncher" Height="768" Width="1280" WindowStyle="None" Background="#FF222222" Margin="0" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize">
+        Title="Super Launcher" Height="768" Width="1280" WindowStyle="None" Background="#FF222222" Margin="0" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize">
     <Canvas Width="1280" Height="768">
         <Canvas.Resources>
             <Style TargetType="Button">
@@ -20,16 +20,16 @@
             </Style>
         </Canvas.Resources>
         <Grid VerticalAlignment="Top" Height="30" Background="#FF1D1D1D" Width="1280" Canvas.Top="0" HorizontalAlignment="Stretch" MouseDown="DockPanel_MouseDown">
-            <Label Loaded="Top_Title" HorizontalAlignment="Center" Foreground="White" Padding="0,0,3,0" Background="Transparent" VerticalAlignment="Center" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18">Super Launcher</Label>
+            <Label Loaded="Top_Title" HorizontalAlignment="Center" Foreground="White" Padding="0,0,3,0" Background="Transparent" VerticalAlignment="Center" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontFamily="/SuperLuncherWPF;component/Resources/Fonts/#Red Hat Display Medium" Content="Super Launcher"/>
             <DockPanel>
                 <Button Background="#FFC01D1D" Click="Exit_Click">
-                    <Image Source="Resources/X.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Image Source="/Resources/Images/X.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Button>
                 <Button Background="#FF494949" Click="Fullscreen_Click">
-                    <Image Source="Resources/Fullscreen.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Image Source="/Resources/Images/Fullscreen.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Button>
                 <Button Background="#FF1D1D1D" Click="Minimize_Click">
-                    <Image Source="Resources/MinMax.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Image Source="/Resources/Images/MinMax.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Button>
             </DockPanel>
         </Grid>

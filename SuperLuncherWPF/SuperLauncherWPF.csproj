@@ -90,6 +90,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\Fonts\RedHatDisplay-Bold.ttf" />
+    <Resource Include="Resources\Fonts\RedHatDisplay-Medium.ttf" />
+    <Resource Include="Resources\Fonts\RedHatDisplay-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
