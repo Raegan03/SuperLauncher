@@ -102,5 +102,8 @@
     <Resource Include="Resources\Images\MinMax.png" />
     <Resource Include="Resources\Images\X.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Normal.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

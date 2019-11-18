@@ -33,6 +33,16 @@ namespace SuperLauncherWPF
         private void Fullscreen_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+            Button button = sender as Button;
+            Image image = VisualTreeHelper.GetChild(button, 0) as Image;
+            if(WindowState == WindowState.Normal)
+            {
+                image.Source = new BitmapImage(new Uri(@"/Resources/Images/Fullscreen.png", UriKind.Relative));
+            }
+            else
+            {
+                image.Source = new BitmapImage(new Uri(@"/Resources/Images/Normal.png", UriKind.Relative));
+            }
         }
 
         private void Minimize_Click(object sender, RoutedEventArgs e)
