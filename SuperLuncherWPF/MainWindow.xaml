@@ -40,6 +40,28 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <Style x:Key="RestButton" TargetType="Button" BasedOn="{StaticResource Button}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border>
+                                <Border.Style>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#FF494949"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <Grid Background="Transparent">
+                                    <ContentPresenter></ContentPresenter>
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </Canvas.Resources>
         <Grid VerticalAlignment="Top" Height="30" Background="#FF1D1D1D" Width="1280" Canvas.Top="0" HorizontalAlignment="Stretch" MouseDown="DockPanel_MouseDown">
             <Label Loaded="Top_Title" HorizontalAlignment="Center" Foreground="White" Padding="0,0,3,0" Background="Transparent" VerticalAlignment="Center" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontFamily="/SuperLuncherWPF;component/Resources/Fonts/#Red Hat Display Medium" Content="Super Launcher"/>
@@ -47,10 +69,10 @@
                 <Button Click="Exit_Click" Style="{StaticResource XButton}">
                     <Image Source="/Resources/Images/X.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Button>
-                <Button Background="#FF494949" Click="Fullscreen_Click" Style="{StaticResource XButton}">
+                <Button Background="#FF494949" Click="Fullscreen_Click" Style="{StaticResource RestButton}">
                     <Image Source="/Resources/Images/Fullscreen.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Button>
-                <Button Background="#FF1D1D1D" Click="Minimize_Click" Style="{StaticResource XButton}">
+                <Button Background="#FF1D1D1D" Click="Minimize_Click" Style="{StaticResource RestButton}">
                     <Image Source="/Resources/Images/MinMax.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Button>
             </DockPanel>
