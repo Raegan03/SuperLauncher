@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SuperLuncherWPF.Properties
+namespace SuperLauncherWPF.Properties
 {
 
 

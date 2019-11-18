@@ -1,11 +1,11 @@
-﻿<Window  x:Class="SuperLuncherWPF.MainWindow"
+﻿<Window  x:Class="SuperLauncherWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SuperLuncherWPF"
+        xmlns:local="clr-namespace:SuperLauncherWPF"
         mc:Ignorable="d"
-        Title="SuperLuncher" Height="768" Width="1280" WindowStyle="None" Background="#FF222222" Margin="0" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize">
+        Title="SuperLauncher" Height="768" Width="1280" WindowStyle="None" Background="#FF222222" Margin="0" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize">
     <Canvas Width="1280" Height="768">
         <Canvas.Resources>
             <Style TargetType="Button">

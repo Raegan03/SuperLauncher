@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperLuncherWPF", "SuperLuncherWPF\SuperLuncherWPF.csproj", "{9272D675-72AF-4B87-A17C-B04869B670DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperLauncherWPF", "SuperLuncherWPF\SuperLauncherWPF.csproj", "{9272D675-72AF-4B87-A17C-B04869B670DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperLuncherLibrary", "SuperLuncherLibrary\SuperLuncherLibrary.csproj", "{021E4177-4592-4B48-9595-DF09EA6B94B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperLauncherLibrary", "SuperLuncherLibrary\SuperLauncherLibrary.csproj", "{021E4177-4592-4B48-9595-DF09EA6B94B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperLuncherTests", "SuperLuncherTests\SuperLuncherTests.csproj", "{6CCA7E13-C05E-420D-A05D-9B77CA0FA553}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperLauncherTests", "SuperLuncherTests\SuperLauncherTests.csproj", "{6CCA7E13-C05E-420D-A05D-9B77CA0FA553}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
