@@ -33,16 +33,14 @@ namespace SuperLauncherWPF
         private void Fullscreen_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
-            Button button = sender as Button;
-            Image image = VisualTreeHelper.GetChild(button, 0) as Image;
-            if(WindowState == WindowState.Normal)
-            {
-                image.Source = new BitmapImage(new Uri(@"/Resources/Images/Fullscreen.png", UriKind.Relative));
-            }
-            else
-            {
-                image.Source = new BitmapImage(new Uri(@"/Resources/Images/Normal.png", UriKind.Relative));
-            }
+
+            var image = FindLogicalChildren<Image>(sender as DependencyObject)?.FirstOrDefault();
+            if (image == null)
+                return;
+
+            image.Source = WindowState == WindowState.Normal
+                ? new BitmapImage(new Uri("/SuperLuncherWPF;component/Media/Images/Fullscreen.png", UriKind.Relative))
+                : new BitmapImage(new Uri("/SuperLuncherWPF;component/Media/Images/Normal.png", UriKind.Relative));
         }
 
         private void Minimize_Click(object sender, RoutedEventArgs e)
@@ -60,6 +58,29 @@ namespace SuperLauncherWPF
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
+        }
+
+        public IEnumerable<T> FindLogicalChildren<T>(DependencyObject parent) where T : DependencyObject
+        {
+            if (parent == null)
+                throw new ArgumentNullException(nameof(parent));
+
+            var queue = new Queue<DependencyObject>(new[] { parent });
+
+            while (queue.Any())
+            {
+                var reference = queue.Dequeue();
+                var children = LogicalTreeHelper.GetChildren(reference);
+                var objects = children.OfType<DependencyObject>();
+
+                foreach (var o in objects)
+                {
+                    if (o is T child)
+                        yield return child;
+
+                    queue.Enqueue(o);
+                }
+            }
         }
     }
 }

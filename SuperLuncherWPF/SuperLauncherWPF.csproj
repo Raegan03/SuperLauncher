@@ -90,20 +90,20 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Resource Include="Resources\Fonts\RedHatDisplay-Bold.ttf" />
-    <Resource Include="Resources\Fonts\RedHatDisplay-Medium.ttf" />
-    <Resource Include="Resources\Fonts\RedHatDisplay-Regular.ttf" />
+    <Resource Include="Media\Fonts\RedHatDisplay-Bold.ttf" />
+    <Resource Include="Media\Fonts\RedHatDisplay-Medium.ttf" />
+    <Resource Include="Media\Fonts\RedHatDisplay-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Fullscreen.png" />
-    <Resource Include="Resources\Images\MinMax.png" />
-    <Resource Include="Resources\Images\X.png" />
+    <Resource Include="Media\Images\Fullscreen.png" />
+    <Resource Include="Media\Images\MinMax.png" />
+    <Resource Include="Media\Images\X.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Normal.png" />
+    <Resource Include="Media\Images\Normal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
