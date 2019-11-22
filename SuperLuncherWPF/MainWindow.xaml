@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SuperLauncherWPF"
         mc:Ignorable="d"
-        Title="Super Launcher" Height="768" Width="1280" WindowStyle="None" Background="#FF222222" Margin="0" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize">
-    <Canvas Width="1280" Height="768">
-        <Canvas.Resources>
+        Title="Super Launcher" WindowStyle="None" MinHeight="768" MinWidth="1280" Background="#FF222222" Margin="0" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" WindowState="Normal"
+        MaxWidth="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Width}"
+        MaxHeight="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Height}">
+    <Grid>
+        <Grid.Resources>
             <Style x:Key="Button" TargetType="Button">
                 <Setter Property="BorderThickness" Value="0" />
                 <Setter Property="Padding" Value="0" />
@@ -62,8 +64,15 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-        </Canvas.Resources>
-        <Grid VerticalAlignment="Top" Height="30" Background="#FF1D1D1D" Width="1280" Canvas.Top="0" HorizontalAlignment="Stretch" MouseDown="DockPanel_MouseDown">
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition MinHeight="738"/>
+        </Grid.RowDefinitions>
+        <Grid VerticalAlignment="Top" Background="#FF1D1D1D" MouseDown="DockPanel_MouseDown">
             <Label Loaded="Top_Title" HorizontalAlignment="Center" Foreground="White" Padding="0,0,3,0" Background="Transparent" VerticalAlignment="Center" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontFamily="/SuperLuncherWPF;component/Media/Fonts/#Red Hat Display Medium" Content="Super Launcher"/>
             <DockPanel>
                 <Button Click="Exit_Click" Style="{StaticResource XButton}">
@@ -77,7 +86,29 @@
                 </Button>
             </DockPanel>
         </Grid>
-        <DockPanel VerticalAlignment="Bottom" Height="738" Background="#FF222222" Width="318" HorizontalAlignment="Left" Canvas.Top="30"/>
-        <DockPanel VerticalAlignment="Bottom" Height="738" Background="#FF3F3F3F" Width="957" HorizontalAlignment="Left" Canvas.Top="30" Canvas.Left="323"/>
-    </Canvas>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel VerticalAlignment="Top" Background="#FF222222" MinHeight="738"/>
+            <Grid VerticalAlignment="Top" Background="#FF3F3F3F" MinHeight="738" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <Canvas Background="#FF222222"></Canvas>
+                <Canvas Background="#FFFFFFFF" Grid.Row="1"></Canvas>
+                <Canvas Background="#FF3F3F3F" Grid.Column="1"></Canvas>
+                <Canvas Background="#FF797979" Grid.Column="1" Grid.Row="1"></Canvas>
+            </Grid>
+        </Grid>
+    </Grid>
 </Window>
