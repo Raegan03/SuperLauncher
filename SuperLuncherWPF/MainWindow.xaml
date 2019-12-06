@@ -94,7 +94,14 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel VerticalAlignment="Top" Background="#FF222222" MinHeight="738"/>
+            <StackPanel Background="#FF222222" HorizontalAlignment="Center" MinHeight="738" Width="320" Orientation="Horizontal">
+                <Button HorizontalAlignment="Center" Width="320" Height="32" VerticalAlignment="Top" Padding="0" BorderThickness="0" Background="#FF333333">
+                    <DockPanel>                    
+                        <Label Height="32" VerticalContentAlignment="Center" Foreground="White" FontFamily="./#Red Hat Display" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="0,0,10,0">Super Category 1</Label>
+                        <Image Width="26" Source="/Media/Images/ArrowUp.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Height="18"/>
+                    </DockPanel>
+                </Button>
+            </StackPanel>
             <Grid VerticalAlignment="Top" Background="#FF3F3F3F" MinHeight="738" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
