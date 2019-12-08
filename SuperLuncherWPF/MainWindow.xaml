@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Super Launcher" WindowStyle="None" MinHeight="768" MinWidth="1280" Background="#FF222222" Margin="0" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" WindowState="Normal"
         MaxWidth="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Width}"
-        MaxHeight="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Height}">
+        MaxHeight="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Height}" Icon="/Media/Images/Icon.png">
     <Grid>
         <Grid.Resources>
             <Style x:Key="Button" TargetType="Button">
@@ -73,6 +73,9 @@
             <RowDefinition MinHeight="738"/>
         </Grid.RowDefinitions>
         <Grid VerticalAlignment="Top" Background="#FF1D1D1D" MouseDown="DockPanel_MouseDown">
+            <Button Width="60" Height="30" HorizontalAlignment="Left" Click="Hamburger_Click" BorderBrush="{x:Null}" Padding="0" BorderThickness="0" Background="{x:Null}">
+                <Image Source="/Media/Images/Hamburger.png" />
+            </Button>
             <Label Loaded="Top_Title" HorizontalAlignment="Center" Foreground="White" Padding="0,0,3,0" Background="Transparent" VerticalAlignment="Center" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontFamily="/SuperLuncherWPF;component/Media/Fonts/#Red Hat Display Medium" Content="Super Launcher"/>
             <DockPanel>
                 <Button Click="Exit_Click" Style="{StaticResource XButton}">
@@ -94,7 +97,7 @@
                 <ColumnDefinition Width="320"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel Background="#FF222222" MinHeight="738" HorizontalAlignment="Center">
+            <StackPanel Background="#FF222222" MinHeight="738">
                 <Button Height="32" VerticalAlignment="Top" Padding="0" BorderThickness="0" Background="#FF333333">
                     <DockPanel>                    
                         <Label Height="32" VerticalContentAlignment="Center" Foreground="White" FontFamily="./#Red Hat Display" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="0,0,0,0">Super Category 1</Label>
@@ -144,7 +147,7 @@
                     </DockPanel>
                 </Button>
             </StackPanel>
-            <Grid Background="#FF3F3F3F" MinHeight="738" Grid.Column="1" VerticalAlignment="Top">
+            <Grid Background="#FF3F3F3F" MinHeight="738" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -153,10 +156,18 @@
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
-                <Canvas Background="#FF222222"></Canvas>
-                <Canvas Background="#FFFFFFFF" Grid.Row="1"></Canvas>
-                <Canvas Background="#FF3F3F3F" Grid.Column="1"></Canvas>
-                <Canvas Background="#FF797979" Grid.Column="1" Grid.Row="1"></Canvas>
+                <DockPanel Background="#FF222222">
+                    <Label Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontFamily="./#Red Hat Display Medium">Info View</Label> 
+                </DockPanel>
+                <DockPanel Background="#FF333333" Grid.Row="1">
+                    <Label Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontFamily="./#Red Hat Display Medium">Web Browser</Label>
+                </DockPanel>
+                <DockPanel Background="#FF444444" Grid.Column="1">
+                    <Label Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontFamily="./#Red Hat Display Medium">Session Info</Label>
+                </DockPanel>
+                <DockPanel Background="#FF555555" Grid.Column="1" Grid.Row="1">
+                    <Label Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontFamily="./#Red Hat Display Medium">Achievements</Label>
+                </DockPanel>
             </Grid>
         </Grid>
     </Grid>

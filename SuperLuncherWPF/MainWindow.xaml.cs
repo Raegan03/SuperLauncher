@@ -82,5 +82,9 @@ namespace SuperLauncherWPF
                 }
             }
         }
+
+        private void Hamburger_Click(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }
