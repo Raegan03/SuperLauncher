@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -85,6 +88,59 @@ namespace SuperLauncherWPF
 
         private void Hamburger_Click(object sender, RoutedEventArgs e)
         {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Title = "Select new application for launcher",
+                Filter = "Application (*.exe)|*.exe"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                var icon = System.Drawing.Icon.ExtractAssociatedIcon(openFileDialog.FileName);
+                var bitmap = icon.ToBitmap();
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    FileName = "Icon"
+                };
+
+                if(saveFileDialog.ShowDialog() == true)
+                {
+                    bitmap.Save(saveFileDialog.FileName);
+                }
+
+                Process process = new Process();
+                process.StartInfo.FileName = openFileDialog.FileName;
+                process.Start();
+                RuntimeMonitor rtm = new RuntimeMonitor(5000);
+                process.WaitForExit();
+                rtm.Close();
+            }
+        }
+    }
+
+    public class RuntimeMonitor
+    {
+        System.Timers.Timer timer;
+
+        // Define other methods and classes here
+        public RuntimeMonitor(double intervalMs) // in milliseconds
+        {
+            timer = new System.Timers.Timer();
+            timer.Interval = intervalMs;
+            timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_func);
+            timer.AutoReset = true;
+            timer.Start();
+        }
+
+        void timer_func(object source, object e)
+        {
+            Console.WriteLine("Yes");
+        }
+
+        public void Close()
+        {
+            timer.Stop();
         }
     }
 }
