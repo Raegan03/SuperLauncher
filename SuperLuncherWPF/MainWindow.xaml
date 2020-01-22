@@ -8,6 +8,9 @@
         Title="Super Launcher" WindowStyle="None" MinHeight="768" MinWidth="1280" Background="#FF222222" Margin="0" ResizeMode="CanMinimize" AllowsTransparency="False" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" WindowState="Normal"
         MaxWidth="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Width}"
         MaxHeight="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Height}" Icon="/Media/Images/Icon.png">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="visibilityConverter" />
+    </Window.Resources>
     <Grid>
         <Grid.Resources>
             <Style x:Key="Button" TargetType="Button">
@@ -73,9 +76,16 @@
             <RowDefinition MinHeight="738"/>
         </Grid.RowDefinitions>
         <Grid VerticalAlignment="Top" Background="#FF1D1D1D" MouseDown="DockPanel_MouseDown">
-            <Button Width="60" Height="30" HorizontalAlignment="Left" Click="Hamburger_Click" BorderBrush="{x:Null}" Padding="0" BorderThickness="0" Background="{x:Null}">
-                <Image Source="/Media/Images/Hamburger.png" />
-            </Button>
+            <Menu Width="60" Height="30" HorizontalAlignment="Left" BorderBrush="{x:Null}" Padding="0" BorderThickness="0" Background="{x:Null}">
+                <MenuItem Width="60" Height="30" Background="{x:Null}" VerticalContentAlignment="Center" Padding="0" BorderBrush="{x:Null}" BorderThickness="0">
+                    <MenuItem.Header>
+                        <Image Source="/Media/Images/Hamburger.png" />
+                    </MenuItem.Header>
+                    <MenuItem Header="Add new application" Background="#FF222222" Foreground="White" BorderBrush="{x:Null}" BorderThickness="0" Click="AddNewAplication"/>
+                    <Separator/>
+                    <MenuItem Header="Create new category" Background="#FF222222" Foreground="White" BorderBrush="{x:Null}" BorderThickness="0"/>
+                </MenuItem>
+            </Menu>
             <Label Loaded="Top_Title" HorizontalAlignment="Center" Foreground="White" Padding="0,0,3,0" Background="Transparent" VerticalAlignment="Center" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontFamily="/SuperLuncherWPF;component/Media/Fonts/#Red Hat Display Medium" Content="Super Launcher"/>
             <DockPanel>
                 <Button Click="Exit_Click" Style="{StaticResource XButton}">
@@ -89,6 +99,7 @@
                 </Button>
             </DockPanel>
         </Grid>
+
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -98,46 +109,27 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel Background="#FF222222" MinHeight="738">
-                <ItemsControl Name="categoriesList">
+                <ItemsControl Name="applicationsList">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Grid Height="112" Margin="0,0,0,5">
+                            <Grid Height="80" VerticalAlignment="Top" Margin="0, 5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1.5*"/>
                                     <ColumnDefinition Width="3.5*"/>
                                 </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="32"/>
-                                    <RowDefinition Height="80"/>
-                                </Grid.RowDefinitions>
-                                <Button Height="32" VerticalAlignment="Top" Padding="0" BorderThickness="0" Background="#FF333333">
-                                    <DockPanel>
-                                        <Label Height="32" VerticalContentAlignment="Center" Foreground="White" FontFamily="./#Red Hat Display" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="0,0,0,0" Content="{Binding Title}" />
-                                        <Image Width="26" Source="/Media/Images/ArrowUp.png" Height="18" Margin="10,0,0,0"/>
-                                    </DockPanel>
-                                </Button>
-                                <ItemsControl Name="applicationsList"  ItemsSource="{Binding Applications}" >
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <Grid Height="80" VerticalAlignment="Top">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="1.5*"/>
-                                                    <ColumnDefinition Width="3.5*"/>
-                                                </Grid.ColumnDefinitions>
-                                                <Image Height="64" Width="64" Source="/Media/Images/DefaultAvatar.png"></Image>
-                                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0,0,0,4" FontSize="18" FontFamily="./#Red Hat Display" Text="{Binding AppName}"/>
-                                                    <Image Height="1" Width="90" Source="{Binding AppIconPath}" />
-                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0,5,0,0" FontSize="12" FontFamily="./#Red Hat Display">Last opened: XX.XX.XXXX XX:XX</TextBlock>
-                                                </StackPanel>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
+                                <Image Height="64" Width="64" Source="{Binding AppIconPath}"></Image>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0,0,0,4" FontSize="18" FontFamily="./#Red Hat Display" Text="{Binding AppName}"/>
+                                    <Image Name="Test" Height="1" Width="90" Source="/Media/Images/Line.png" />
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0,5,0,0" FontSize="12" FontFamily="./#Red Hat Display">Last opened: XX.XX.XXXX XX:XX</TextBlock>
+                                </StackPanel>
                             </Grid>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
+                <Button Name="NewAppButton" Click="AddNewAplication" BorderBrush="{x:Null}" Padding="0" BorderThickness="0" Background="#FF444444" Foreground="White" Height="50" Margin="0">
+                    Add new application
+                </Button>
             </StackPanel>
             <Grid Background="#FF3F3F3F" MinHeight="738" Grid.Column="1">
                 <Grid.ColumnDefinitions>
@@ -149,7 +141,7 @@
                     <RowDefinition Height="3*" MaxHeight="500"/>
                 </Grid.RowDefinitions>
                 <DockPanel Background="#FF222222">
-                    <Label Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontFamily="./#Red Hat Display Medium">Info View</Label> 
+                    <Label Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontFamily="./#Red Hat Display Medium">Info View</Label>
                 </DockPanel>
                 <DockPanel Grid.Row="1" Background="Transparent">
                     <WebBrowser Name="WebBrowser"></WebBrowser>
@@ -194,6 +186,9 @@
                     </Grid>
                 </Grid>
             </Grid>
+            <DockPanel Background="#FF3F3F3F" MinHeight="738" Grid.Column="1" Name="CoverPanel">
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/SuperLauncherWPF;component/Media/Fonts/#Red Hat Display Medium" FontSize="48" Foreground="White">No applications found</Label>
+            </DockPanel>
         </Grid>
     </Grid>
 </Window>

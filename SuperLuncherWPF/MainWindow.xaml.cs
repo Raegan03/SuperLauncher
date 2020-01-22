@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SuperLauncher.Data;
 
 namespace SuperLauncherWPF
 {
@@ -27,6 +29,13 @@ namespace SuperLauncherWPF
         {
             InitializeComponent();
             WebBrowser.Navigate("http://google.com");
+
+            var app = Application.Current as App;
+            applicationsList.ItemsSource = app.Launcher.SuperLauncherAppDatas;
+
+            bool noApp = app.Launcher.SuperLauncherAppDatas.Count == 0;
+            CoverPanel.Visibility = noApp ? Visibility.Visible : Visibility.Hidden;
+            WebBrowser.Visibility = noApp ? Visibility.Hidden : Visibility.Visible;
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -116,6 +125,21 @@ namespace SuperLauncherWPF
                 RuntimeMonitor rtm = new RuntimeMonitor(5000);
                 process.WaitForExit();
                 rtm.Close();
+            }
+        }
+
+        private void AddNewAplication(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Title = "Select new application for launcher",
+                Filter = "Application (*.exe)|*.exe"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                var app = Application.Current as App;
+                app.Launcher.AddNewApplication(openFileDialog.FileName);
             }
         }
     }

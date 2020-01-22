@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Drawing;
 using Newtonsoft.Json;
 using SuperLauncher.Data;
 
@@ -16,17 +18,10 @@ namespace SuperLauncher
         private const string APP_ICONS_DIRECTORY_NAME = "Icons";
 
         private const string APP_DATA_FILENAME = "AppData.data";
-        private const string APP_CATEGORIES_DATA_FILENAME = "CategoriespData.data";
 
         public SuperLauncherAppData CurrentSelectedApp { get; private set; }
-        public IReadOnlyList<SuperLauncherAppData> SuperLauncherAppDatas =>
-            _superLauncherAppDatas;
 
-        public IReadOnlyList<SuperLauncherAppCategoryData> SuperLauncherAppCategoryDatas =>
-            _superLauncherAppCategoryDatas;
-
-        private List<SuperLauncherAppData> _superLauncherAppDatas;
-        private List<SuperLauncherAppCategoryData> _superLauncherAppCategoryDatas;
+        public ObservableCollection<SuperLauncherAppData> SuperLauncherAppDatas { get; private set; }
 
         private readonly string AppDataDirectoryPath;
         private readonly string AppIconsDirectoryPath;
@@ -46,33 +41,60 @@ namespace SuperLauncher
             }
 
             var appDatasPath = Path.Combine(AppDataDirectoryPath, APP_DATA_FILENAME);
-            var appCategoriesDatasPath = Path.Combine(AppDataDirectoryPath, APP_CATEGORIES_DATA_FILENAME);
 
             if (File.Exists(appDatasPath))
             {
                 var jsonData = File.ReadAllText(appDatasPath);
-                _superLauncherAppDatas = JsonConvert.DeserializeObject<List<SuperLauncherAppData>>(jsonData);
+                var array = JsonConvert.DeserializeObject<SuperLauncherAppData[]>(jsonData);
+                SuperLauncherAppDatas = new ObservableCollection<SuperLauncherAppData>(array);
             }
             else
             {
-                _superLauncherAppDatas = new List<SuperLauncherAppData>();
+                SuperLauncherAppDatas = new ObservableCollection<SuperLauncherAppData>();
 
-                var jsonData = JsonConvert.SerializeObject(_superLauncherAppDatas);
+                var jsonData = JsonConvert.SerializeObject(SuperLauncherAppDatas.ToArray());
                 File.WriteAllText(appDatasPath, jsonData);
             }
+        }
 
-            if (File.Exists(appCategoriesDatasPath))
+        public void AddNewApplication(string applicationPath)
+        {
+            var appData = new SuperLauncherAppData
             {
-                var jsonData = File.ReadAllText(appCategoriesDatasPath);
-                _superLauncherAppCategoryDatas = JsonConvert.DeserializeObject<List<SuperLauncherAppCategoryData>>(jsonData);
-            }
-            else
-            {
-                _superLauncherAppCategoryDatas = new List<SuperLauncherAppCategoryData>();
+                AppGUID = Guid.NewGuid(),
+                AppName = Path.GetFileNameWithoutExtension(applicationPath),
+                AppExecutablePath = applicationPath,
+            };
 
-                var jsonData = JsonConvert.SerializeObject(_superLauncherAppDatas);
-                File.WriteAllText(appCategoriesDatasPath, jsonData);
+            using (var icon = Icon.ExtractAssociatedIcon(applicationPath))
+            {
+                using (var bitmap = icon.ToBitmap())
+                {
+                    var iconPath = Path.Combine(AppIconsDirectoryPath, appData.AppGUID + ".png");
+                    appData.AppIconPath = iconPath;
+                    using (var stream = new StreamWriter(iconPath))
+                    {
+                        bitmap.Save(stream.BaseStream, System.Drawing.Imaging.ImageFormat.Png);
+                        stream.Close();
+                    }
+                }
             }
+
+            SuperLauncherAppDatas.Add(appData);
+            CurrentSelectedApp = appData;
+
+            SaveData();
+        }
+
+        public void RemoveApplication(Guid applicationGuid)
+        { }
+
+        private void SaveData()
+        {
+            var appDatasPath = Path.Combine(AppDataDirectoryPath, APP_DATA_FILENAME);
+
+            var appsJsonData = JsonConvert.SerializeObject(SuperLauncherAppDatas.ToArray());
+            File.WriteAllText(appDatasPath, appsJsonData);
         }
     }
 }

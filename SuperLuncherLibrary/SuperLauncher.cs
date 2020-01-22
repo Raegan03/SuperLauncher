@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
+using SuperLauncher.Data;
 
 namespace SuperLauncher
 {
@@ -12,11 +9,20 @@ namespace SuperLauncher
     /// </summary>
     public class SuperLauncher
     {
-        public SuperLauncherContext SuperLauncherContext { get; private set; }
+        public SuperLauncherAppData CurrentSelectedApp => 
+            _superLauncherContext.CurrentSelectedApp;
+
+        public ObservableCollection<SuperLauncherAppData> SuperLauncherAppDatas => 
+            _superLauncherContext.SuperLauncherAppDatas;
+
+        private SuperLauncherContext _superLauncherContext;
 
         public SuperLauncher()
         {
-            SuperLauncherContext = new SuperLauncherContext();
+            _superLauncherContext = new SuperLauncherContext();
         }
+
+        public void AddNewApplication(string applicationPath)
+            => _superLauncherContext.AddNewApplication(applicationPath);
     }
 }
