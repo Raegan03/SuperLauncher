@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SuperLauncherWPF"
         mc:Ignorable="d"
-        Title="Super Launcher" WindowStyle="None" MinHeight="768" MinWidth="1280" Background="#FF222222" Margin="0" ResizeMode="CanResizeWithGrip" AllowsTransparency="False" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" WindowState="Normal"
+        Title="Super Launcher" WindowStyle="None" MinHeight="768" MinWidth="1280" Background="#FF222222" Margin="0" ResizeMode="CanMinimize" AllowsTransparency="False" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" WindowState="Normal"
         MaxWidth="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Width}"
         MaxHeight="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Height}" Icon="/Media/Images/Icon.png">
     <Grid>
@@ -81,9 +81,9 @@
                 <Button Click="Exit_Click" Style="{StaticResource XButton}">
                     <Image Source="/Media/Images/X.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Button>
-                <Button Background="#FF494949" Click="Fullscreen_Click" Style="{StaticResource RestButton}">
+                <!--<Button Background="#FF494949" Click="Fullscreen_Click" Style="{StaticResource RestButton}">
                     <Image Source="/Media/Images/Fullscreen.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </Button>
+                </Button>-->
                 <Button Background="#FF1D1D1D" Click="Minimize_Click" Style="{StaticResource RestButton}">
                     <Image Source="/Media/Images/MinMax.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Button>
