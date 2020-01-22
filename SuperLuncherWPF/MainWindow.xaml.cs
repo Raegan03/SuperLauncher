@@ -26,6 +26,7 @@ namespace SuperLauncherWPF
         public MainWindow()
         {
             InitializeComponent();
+            WebBrowser.Navigate("http://google.com");
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)

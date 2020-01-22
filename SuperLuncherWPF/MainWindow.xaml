@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SuperLauncherWPF"
         mc:Ignorable="d"
-        Title="Super Launcher" WindowStyle="None" MinHeight="768" MinWidth="1280" Background="#FF222222" Margin="0" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" WindowState="Normal"
+        Title="Super Launcher" WindowStyle="None" MinHeight="768" MinWidth="1280" Background="#FF222222" Margin="0" ResizeMode="CanResizeWithGrip" AllowsTransparency="False" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" WindowState="Normal"
         MaxWidth="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Width}"
         MaxHeight="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Height}" Icon="/Media/Images/Icon.png">
     <Grid>
@@ -141,8 +141,8 @@
             </StackPanel>
             <Grid Background="#FF3F3F3F" MinHeight="738" Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
@@ -151,8 +151,8 @@
                 <DockPanel Background="#FF222222">
                     <Label Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontFamily="./#Red Hat Display Medium">Info View</Label> 
                 </DockPanel>
-                <DockPanel Background="#FF333333" Grid.Row="1">
-                    <Label Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontFamily="./#Red Hat Display Medium">Web Browser</Label>
+                <DockPanel Grid.Row="1" Background="Transparent">
+                    <WebBrowser Name="WebBrowser"></WebBrowser>
                 </DockPanel>
                 <DockPanel Background="#FF444444" Grid.Column="1">
                     <Label Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontFamily="./#Red Hat Display Medium">Session Info</Label>
