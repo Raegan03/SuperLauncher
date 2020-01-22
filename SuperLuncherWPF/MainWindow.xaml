@@ -141,12 +141,12 @@
             </StackPanel>
             <Grid Background="#FF3F3F3F" MinHeight="738" Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" MinWidth="480"/>
-                    <ColumnDefinition Width="1*" MinWidth="480"/>
+                    <ColumnDefinition Width="1*" MaxWidth="480"/>
+                    <ColumnDefinition Width="1*" MaxWidth="480"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
-                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="3*" MaxHeight="500"/>
                 </Grid.RowDefinitions>
                 <DockPanel Background="#FF222222">
                     <Label Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontFamily="./#Red Hat Display Medium">Info View</Label> 
