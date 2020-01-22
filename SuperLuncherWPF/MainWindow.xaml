@@ -146,10 +146,28 @@
                 <DockPanel Grid.Row="1" Background="Transparent">
                     <WebBrowser Name="WebBrowser"></WebBrowser>
                 </DockPanel>
-                <DockPanel Background="#FF444444" Grid.Column="1">
-                    <Label Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontFamily="./#Red Hat Display Medium">Session Info</Label>
-                </DockPanel>
-                <Grid Background="#FF555555" Grid.Column="1" Grid.Row="1" Margin="2,0,0,0">
+                <Grid Background="#FF555555" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <DockPanel Background="#FF222222">
+                        <Label Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontFamily="./#Red Hat Display Medium">Sessions</Label>
+                    </DockPanel>
+                    <ScrollViewer Grid.Row="1">
+                        <ItemsControl Name="sessionsList">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <DockPanel>
+                                        </DockPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
+                <Grid Background="#FF555555" Grid.Column="1" Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="1*"/>
