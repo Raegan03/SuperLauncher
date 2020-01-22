@@ -140,9 +140,28 @@
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="3*" MaxHeight="500"/>
                 </Grid.RowDefinitions>
-                <DockPanel Background="#FF222222">
-                    <Label Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontFamily="./#Red Hat Display Medium">Info View</Label>
-                </DockPanel>
+                <Grid Background="#FF222222" Margin="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <DockPanel Margin="0,10">
+                        <Image Source="/Media/Images/DefaultAvatar.png" Width="130" />
+                    </DockPanel>
+                    <DockPanel Grid.Column="1">
+                        <Label Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="26" FontFamily="./#Red Hat Display Medium">Info View</Label>
+                    </DockPanel>
+                    <Button Grid.Row="1" Margin="20">
+                        Button A
+                    </Button>
+                    <Button Grid.Row="1" Grid.Column="1" Margin="20">
+                        Button A
+                    </Button>
+                </Grid>
                 <DockPanel Grid.Row="1" Background="Transparent">
                     <WebBrowser Name="WebBrowser"></WebBrowser>
                 </DockPanel>
@@ -204,7 +223,7 @@
                     </Grid>
                 </Grid>
             </Grid>
-            <DockPanel Background="#FF3F3F3F" MinHeight="738" Grid.Column="1" Name="CoverPanel">
+            <DockPanel Background="#FF3F3F3F" MinHeight="738" Grid.Column="1" Name="CoverPanel" Visibility="Hidden">
                 <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/SuperLauncherWPF;component/Media/Fonts/#Red Hat Display Medium" FontSize="48" Foreground="White">No applications found</Label>
             </DockPanel>
         </Grid>
