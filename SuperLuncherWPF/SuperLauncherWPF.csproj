@@ -50,7 +50,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>SuperLuncherWPF.App</StartupObject>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -155,6 +156,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Media\Images\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SuperLuncherLibrary\SuperLauncher.csproj">
+      <Project>{021e4177-4592-4b48-9595-df09ea6b94b3}</Project>
+      <Name>SuperLauncher</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

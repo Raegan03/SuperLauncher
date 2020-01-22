@@ -56,9 +56,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SuperLuncherLibrary\SuperLauncherLibrary.csproj">
+    <ProjectReference Include="..\SuperLuncherLibrary\SuperLauncher.csproj">
       <Project>{021e4177-4592-4b48-9595-df09ea6b94b3}</Project>
-      <Name>SuperLauncherLibrary</Name>
+      <Name>SuperLauncher</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

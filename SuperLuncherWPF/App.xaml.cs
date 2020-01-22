@@ -13,5 +13,13 @@ namespace SuperLauncherWPF
     /// </summary>
     public partial class App : Application
     {
+        public SuperLauncher.SuperLauncher Launcher { get; private set; }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            Launcher = new SuperLauncher.SuperLauncher();
+        }
     }
 }
