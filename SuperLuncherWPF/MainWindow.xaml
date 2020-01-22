@@ -112,13 +112,14 @@
                 <ItemsControl Name="applicationsList">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Grid Height="80" VerticalAlignment="Top" Margin="0, 5">
+                            <Grid Height="80" VerticalAlignment="Top" Margin="0, 5" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1.5*"/>
                                     <ColumnDefinition Width="3.5*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Height="64" Width="64" Source="{Binding AppIconPath}"></Image>
-                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <StackPanel Grid.ColumnSpan="2" Background="#FF444444" Visibility="{Binding Selected, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource visibilityConverter}}"/>
+                                <Image Height="64" Width="64" Source="{Binding AppIconPath}" UIElement.PreviewMouseDown="Grid_PreviewMouseDown" Tag="{Binding AppGUID}" />
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" UIElement.PreviewMouseDown="Grid_PreviewMouseDown" Tag="{Binding AppGUID}">
                                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0,0,0,4" FontSize="18" FontFamily="./#Red Hat Display" Text="{Binding AppName}"/>
                                     <Image Name="Test" Height="1" Width="90" Source="/Media/Images/Line.png" />
                                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0,5,0,0" FontSize="12" FontFamily="./#Red Hat Display">Last opened: XX.XX.XXXX XX:XX</TextBlock>

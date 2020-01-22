@@ -55,6 +55,25 @@ namespace SuperLauncher
                 var jsonData = JsonConvert.SerializeObject(SuperLauncherAppDatas.ToArray());
                 File.WriteAllText(appDatasPath, jsonData);
             }
+
+            foreach (var item in SuperLauncherAppDatas)
+            {
+                if (CurrentSelectedApp != null)
+                    item.Selected = false;
+
+                if(item.Selected)
+                {
+                    CurrentSelectedApp = item;
+                }
+            }
+
+            if(CurrentSelectedApp == null && SuperLauncherAppDatas.Count > 0)
+            {
+                SuperLauncherAppDatas[0].Selected = true;
+                CurrentSelectedApp = SuperLauncherAppDatas[0];
+            }
+
+            SaveData();
         }
 
         public void AddNewApplication(string applicationPath)
@@ -80,7 +99,13 @@ namespace SuperLauncher
                 }
             }
 
+            foreach (var item in SuperLauncherAppDatas)
+            {
+                item.Selected = false;
+            }
             SuperLauncherAppDatas.Add(appData);
+
+            appData.Selected = true;
             CurrentSelectedApp = appData;
 
             SaveData();
@@ -88,6 +113,24 @@ namespace SuperLauncher
 
         public void RemoveApplication(Guid applicationGuid)
         { }
+
+        public void SelectApplication(Guid applicationGuid)
+        {
+            var app = SuperLauncherAppDatas.FirstOrDefault(x => x.AppGUID == applicationGuid);
+            if(app != null)
+            {
+                foreach (var item in SuperLauncherAppDatas)
+                {
+                    item.Selected = false;
+                }
+
+                CurrentSelectedApp = app;
+                CurrentSelectedApp.Selected = true;
+
+                SuperLauncherAppDatas.Add(CurrentSelectedApp);
+                SuperLauncherAppDatas.RemoveAt(SuperLauncherAppDatas.Count - 1);
+            }
+        }
 
         private void SaveData()
         {

@@ -142,6 +142,14 @@ namespace SuperLauncherWPF
                 app.Launcher.AddNewApplication(openFileDialog.FileName);
             }
         }
+
+        private void Grid_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var fe = sender as FrameworkElement;
+
+            var app = Application.Current as App;
+            app.Launcher.SelectApplication((Guid)fe.Tag);
+        }
     }
 
     public class RuntimeMonitor

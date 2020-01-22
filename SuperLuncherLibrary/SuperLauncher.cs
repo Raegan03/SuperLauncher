@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using SuperLauncher.Data;
 
 namespace SuperLauncher
@@ -24,5 +25,8 @@ namespace SuperLauncher
 
         public void AddNewApplication(string applicationPath)
             => _superLauncherContext.AddNewApplication(applicationPath);
+
+        public void SelectApplication(Guid applicationGuid)
+            => _superLauncherContext.SelectApplication(applicationGuid);
     }
 }
