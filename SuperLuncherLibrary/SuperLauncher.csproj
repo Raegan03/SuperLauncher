@@ -48,12 +48,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationProcess.cs" />
+    <Compile Include="Data\ApplicationRuntimeData.cs" />
+    <Compile Include="Data\LauncherDataWrapper.cs" />
     <Compile Include="Data\SuperLauncherSessionData.cs" />
+    <Compile Include="LauncherDatabase.cs" />
+    <Compile Include="LauncherHelper.cs" />
     <Compile Include="SuperLauncher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Data\SuperLauncherAppData.cs" />
+    <Compile Include="Data\ApplicationSerializableData.cs" />
     <Compile Include="SuperLauncherAchievementsManager.cs" />
-    <Compile Include="SuperLauncherContext.cs" />
     <Compile Include="SuperLauncherSessionsManager.cs" />
   </ItemGroup>
   <ItemGroup>

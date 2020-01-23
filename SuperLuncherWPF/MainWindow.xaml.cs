@@ -31,13 +31,14 @@ namespace SuperLauncherWPF
             WebBrowser.Navigate("http://google.com");
 
             var app = Application.Current as App;
-            applicationsList.ItemsSource = app.Launcher.SuperLauncherAppDatas;
+            applicationsList.ItemsSource = app.Launcher.ApplicationsData;
 
-            bool noApp = app.Launcher.SuperLauncherAppDatas.Count == 0;
+            bool noApp = app.Launcher.IsApplicationsListEmpty;
             CoverPanel.Visibility = noApp ? Visibility.Visible : Visibility.Hidden;
             WebBrowser.Visibility = noApp ? Visibility.Hidden : Visibility.Visible;
 
             sessionsList.ItemsSource = app.Launcher.SuperLauncherSessionDatas;
+            UpdateInfoView();
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -45,18 +46,18 @@ namespace SuperLauncherWPF
             Application.Current.Shutdown();
         }
 
-        private void Fullscreen_Click(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+        //private void Fullscreen_Click(object sender, RoutedEventArgs e)
+        //{
+        //    WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
 
-            var image = FindLogicalChildren<Image>(sender as DependencyObject)?.FirstOrDefault();
-            if (image == null)
-                return;
+        //    var image = FindLogicalChildren<Image>(sender as DependencyObject)?.FirstOrDefault();
+        //    if (image == null)
+        //        return;
 
-            image.Source = WindowState == WindowState.Normal
-                ? new BitmapImage(new Uri("/SuperLuncherWPF;component/Media/Images/Fullscreen.png", UriKind.Relative))
-                : new BitmapImage(new Uri("/SuperLuncherWPF;component/Media/Images/Normal.png", UriKind.Relative));
-        }
+        //    image.Source = WindowState == WindowState.Normal
+        //        ? new BitmapImage(new Uri("/SuperLuncherWPF;component/Media/Images/Fullscreen.png", UriKind.Relative))
+        //        : new BitmapImage(new Uri("/SuperLuncherWPF;component/Media/Images/Normal.png", UriKind.Relative));
+        //}
 
         private void Minimize_Click(object sender, RoutedEventArgs e)
         {
@@ -69,68 +70,23 @@ namespace SuperLauncherWPF
             label.Content = Application.Current.MainWindow.Title;
         }
 
-        private void DockPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        private void WindowDrag(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
-                this.DragMove();
+                DragMove();
         }
 
-        public IEnumerable<T> FindLogicalChildren<T>(DependencyObject parent) where T : DependencyObject
+        private void SelectApplication(object sender, MouseButtonEventArgs e)
         {
-            if (parent == null)
-                throw new ArgumentNullException(nameof(parent));
+            var fe = sender as FrameworkElement;
 
-            var queue = new Queue<DependencyObject>(new[] { parent });
+            var app = Application.Current as App;
+            app.Launcher.SelectApplication((Guid)fe.Tag);
 
-            while (queue.Any())
-            {
-                var reference = queue.Dequeue();
-                var children = LogicalTreeHelper.GetChildren(reference);
-                var objects = children.OfType<DependencyObject>();
-
-                foreach (var o in objects)
-                {
-                    if (o is T child)
-                        yield return child;
-
-                    queue.Enqueue(o);
-                }
-            }
+            UpdateInfoView();
         }
 
-        private void Hamburger_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog
-            {
-                Title = "Select new application for launcher",
-                Filter = "Application (*.exe)|*.exe"
-            };
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                var icon = System.Drawing.Icon.ExtractAssociatedIcon(openFileDialog.FileName);
-                var bitmap = icon.ToBitmap();
-
-                SaveFileDialog saveFileDialog = new SaveFileDialog
-                {
-                    FileName = "Icon"
-                };
-
-                if(saveFileDialog.ShowDialog() == true)
-                {
-                    bitmap.Save(saveFileDialog.FileName);
-                }
-
-                Process process = new Process();
-                process.StartInfo.FileName = openFileDialog.FileName;
-                process.Start();
-                RuntimeMonitor rtm = new RuntimeMonitor(5000);
-                process.WaitForExit();
-                rtm.Close();
-            }
-        }
-
-        private void AddNewAplication(object sender, RoutedEventArgs e)
+        private void AddNewApplication(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
@@ -143,45 +99,38 @@ namespace SuperLauncherWPF
                 var app = Application.Current as App;
                 app.Launcher.AddNewApplication(openFileDialog.FileName);
             }
+
+            UpdateInfoView();
         }
 
-        private void Grid_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            var fe = sender as FrameworkElement;
-
-            var app = Application.Current as App;
-            app.Launcher.SelectApplication((Guid)fe.Tag);
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SessionPlaceholder(object sender, RoutedEventArgs e)
         {
             var app = Application.Current as App;
-            app.Launcher.AddNewSession(app.Launcher.CurrentSelectedApp.AppGUID);
-        }
-    }
-
-    public class RuntimeMonitor
-    {
-        System.Timers.Timer timer;
-
-        // Define other methods and classes here
-        public RuntimeMonitor(double intervalMs) // in milliseconds
-        {
-            timer = new System.Timers.Timer();
-            timer.Interval = intervalMs;
-            timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_func);
-            timer.AutoReset = true;
-            timer.Start();
+            app.Launcher.AddNewSession(app.Launcher.CurrentApplicationData.AppGUID);
         }
 
-        void timer_func(object source, object e)
+        private void UpdateInfoView()
         {
-            Console.WriteLine("Yes");
+            var app = Application.Current as App;
+
+            CurrentAppTitle.Content = app.Launcher.CurrentApplicationData.AppName;
+
+            Uri uri = new Uri(app.Launcher.CurrentApplicationData.AppIconPath, UriKind.Absolute);
+            ImageSource imgSource = new BitmapImage(uri);
+            CurrentAppIcon.Source = imgSource;
+
+            CurrentAppPlay.Tag = app.Launcher.CurrentApplicationData.AppGUID;
+            CurrentAppSettings.Tag = app.Launcher.CurrentApplicationData.AppGUID;
         }
 
-        public void Close()
+        private void CurrentAppSettings_Click(object sender, RoutedEventArgs e)
         {
-            timer.Stop();
+            //TODO
+        }
+
+        private void CurrentAppPlay_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO
         }
     }
 }

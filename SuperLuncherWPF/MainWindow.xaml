@@ -75,18 +75,18 @@
             <RowDefinition Height="30"/>
             <RowDefinition MinHeight="738"/>
         </Grid.RowDefinitions>
-        <Grid VerticalAlignment="Top" Background="#FF1D1D1D" MouseDown="DockPanel_MouseDown">
-            <Menu Width="60" Height="30" HorizontalAlignment="Left" BorderBrush="{x:Null}" Padding="0" BorderThickness="0" Background="{x:Null}">
+        <Grid VerticalAlignment="Top" Background="#FF1D1D1D" MouseDown="WindowDrag">
+            <!--<Menu Width="60" Height="30" HorizontalAlignment="Left" BorderBrush="{x:Null}" Padding="0" BorderThickness="0" Background="{x:Null}">
                 <MenuItem Width="60" Height="30" Background="{x:Null}" VerticalContentAlignment="Center" Padding="0" BorderBrush="{x:Null}" BorderThickness="0">
                     <MenuItem.Header>
                         <Image Source="/Media/Images/Hamburger.png" />
                     </MenuItem.Header>
-                    <MenuItem Header="Add new application" Background="#FF222222" Foreground="White" BorderBrush="{x:Null}" BorderThickness="0" Click="AddNewAplication"/>
+                    <MenuItem Header="Add new application" Background="#FF222222" Foreground="White" BorderBrush="{x:Null}" BorderThickness="0" Click="AddNewApplication"/>
                     <Separator/>
                     <MenuItem Header="Create new category" Background="#FF222222" Foreground="White" BorderBrush="{x:Null}" BorderThickness="0"/>
                 </MenuItem>
-            </Menu>
-            <Label Loaded="Top_Title" HorizontalAlignment="Center" Foreground="White" Padding="0,0,3,0" Background="Transparent" VerticalAlignment="Center" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontFamily="/SuperLuncherWPF;component/Media/Fonts/#Red Hat Display Medium" Content="Super Launcher"/>
+            </Menu>-->
+            <Label Loaded="Top_Title" HorizontalAlignment="Center" Foreground="White" Padding="0,0,3,0" Background="Transparent" VerticalAlignment="Center" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontFamily="/SuperLuncherWPF;component/Media/Fonts/#Red Hat Display Medium"/>
             <DockPanel>
                 <Button Click="Exit_Click" Style="{StaticResource XButton}">
                     <Image Source="/Media/Images/X.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -118,8 +118,8 @@
                                     <ColumnDefinition Width="3.5*"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Grid.ColumnSpan="2" Background="#FF444444" Visibility="{Binding Selected, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource visibilityConverter}}"/>
-                                <Image Height="64" Width="64" Source="{Binding AppIconPath}" UIElement.PreviewMouseDown="Grid_PreviewMouseDown" Tag="{Binding AppGUID}" />
-                                <StackPanel Grid.Column="1" VerticalAlignment="Center" UIElement.PreviewMouseDown="Grid_PreviewMouseDown" Tag="{Binding AppGUID}">
+                                <Image Height="64" Width="64" Source="{Binding AppIconPath}" UIElement.PreviewMouseDown="SelectApplication" Tag="{Binding AppGUID}" />
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" UIElement.PreviewMouseDown="SelectApplication" Tag="{Binding AppGUID}">
                                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0,0,0,4" FontSize="18" FontFamily="./#Red Hat Display" Text="{Binding AppName}"/>
                                     <Image Name="Test" Height="1" Width="90" Source="/Media/Images/Line.png" />
                                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0,5,0,0" FontSize="12" FontFamily="./#Red Hat Display">Last opened: XX.XX.XXXX XX:XX</TextBlock>
@@ -128,7 +128,7 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-                <Button Name="NewAppButton" Click="AddNewAplication" BorderBrush="{x:Null}" Padding="0" BorderThickness="0" Background="#FF444444" Foreground="White" Height="50" Margin="0">
+                <Button Name="NewAppButton" Click="AddNewApplication" BorderBrush="{x:Null}" Padding="0" BorderThickness="0" Background="#FF444444" Foreground="White" Height="50" Margin="0">
                     Add new application
                 </Button>
             </StackPanel>
@@ -151,16 +151,17 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <DockPanel Margin="0,10">
-                        <Image Source="/Media/Images/DefaultAvatar.png" Width="130" />
+                        <Image Name="CurrentAppIcon" Source="/Media/Images/DefaultAvatar.png" Width="130" />
                     </DockPanel>
                     <DockPanel Grid.Column="1">
-                        <Label Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="26" FontFamily="./#Red Hat Display Medium">Info View</Label>
+                        <Label Name="CurrentAppTitle" Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="26" FontFamily="./#Red Hat Display Medium">Info View</Label>
                     </DockPanel>
-                    <Button Grid.Row="1" Margin="20">
-                        Button A
+                    <Button Grid.Row="1" Margin="20" Name="CurrentAppSettings" Click="CurrentAppSettings_Click" Padding="0" BorderThickness="0" Background="#FF09A0E6" Foreground="White" FontFamily="/SuperLauncherWPF;component/Media/Fonts/#Red Hat Display" FontSize="20
+">
+                        Settings
                     </Button>
-                    <Button Grid.Row="1" Grid.Column="1" Margin="20">
-                        Button A
+                    <Button Grid.Row="1" Grid.Column="1" Margin="20" Name="CurrentAppPlay" Click="CurrentAppPlay_Click" Padding="0" BorderThickness="0" Background="#FF09A0E6" Foreground="White" FontFamily="/SuperLauncherWPF;component/Media/Fonts/#Red Hat Display" FontSize="28">
+                        Start Application
                     </Button>
                 </Grid>
                 <DockPanel Grid.Row="1" Background="Transparent">
@@ -192,7 +193,7 @@
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
-                            <Button Click="Button_Click">Placeholder add</Button>
+                            <Button Click="SessionPlaceholder">Placeholder add</Button>
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
