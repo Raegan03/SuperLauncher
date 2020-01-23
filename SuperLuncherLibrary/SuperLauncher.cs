@@ -12,17 +12,11 @@ namespace SuperLauncher
     /// </summary>
     public class SuperLauncher
     {
-        public string CurrentAppName => CurrentApplicationData.AppName;
-
-        public ObservableCollection<SuperLauncherSessionData> SuperLauncherSessionDatas =>
-            _sessionManager.SuperLauncherSessionDatas;
-
-        private SuperLauncherSessionsManager _sessionManager;
-
         public bool IsApplicationsListEmpty => ApplicationsData.Count == 0;
 
         public ApplicationRuntimeData CurrentApplicationData { get; private set; }
         public ObservableCollection<ApplicationRuntimeData> ApplicationsData { get; private set; }
+        public ObservableCollection<SessionRuntimeData> SessionsData { get; private set; }
 
         private LauncherDatabase _launcherDatabase;
         private ApplicationProcess _currentProcess;
@@ -39,13 +33,19 @@ namespace SuperLauncher
                 ApplicationsData.Add(runtimeData);
             }
 
+            SessionsData = new ObservableCollection<SessionRuntimeData>();
+            foreach (var sessionData in _launcherDatabase.SessionsData)
+            {
+                var runtimeData = new SessionRuntimeData(sessionData);
+
+                SessionsData.Add(runtimeData);
+            }
+
             CurrentApplicationData = new ApplicationRuntimeData();
             if (ApplicationsData.Count > 0)
             {
                 SelectApplication(ApplicationsData[0].AppGUID);
             }
-
-            _sessionManager = new SuperLauncherSessionsManager();
         }
 
         public void AddNewApplication(string applicationPath)
@@ -78,7 +78,9 @@ namespace SuperLauncher
         }
 
         public void AddNewSession(Guid applicationGuid)
-            => _sessionManager.AddNewSession(applicationGuid);
+        {
+            //TODO
+        }
 
 
         public void SelectApplication(Guid applicationGuid)

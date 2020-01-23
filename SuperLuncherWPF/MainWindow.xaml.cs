@@ -36,7 +36,7 @@ namespace SuperLauncherWPF
             CoverPanel.Visibility = noApp ? Visibility.Visible : Visibility.Hidden;
             WebBrowser.Visibility = noApp ? Visibility.Hidden : Visibility.Visible;
 
-            sessionsList.ItemsSource = app.Launcher.SuperLauncherSessionDatas;
+            sessionsList.ItemsSource = app.Launcher.SessionsData;
             UpdateInfoView();
         }
 
@@ -111,6 +111,12 @@ namespace SuperLauncherWPF
         private void UpdateInfoView()
         {
             var app = Application.Current as App;
+            bool noApp = app.Launcher.IsApplicationsListEmpty;
+            CoverPanel.Visibility = noApp ? Visibility.Visible : Visibility.Hidden;
+            WebBrowser.Visibility = noApp ? Visibility.Hidden : Visibility.Visible;
+
+            if (string.IsNullOrEmpty(app.Launcher.CurrentApplicationData.AppName))
+                return;
 
             CurrentAppTitle.Content = app.Launcher.CurrentApplicationData.AppName;
 

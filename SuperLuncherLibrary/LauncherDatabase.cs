@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
@@ -13,8 +12,11 @@ namespace SuperLauncher
 
         public IReadOnlyList<ApplicationSerializableData> ApplicationsData => 
             _applicationsData;
+        public IReadOnlyList<SessionSerializableData> SessionsData =>
+            _sessionsData;
 
         private List<ApplicationSerializableData> _applicationsData;
+        private List<SessionSerializableData> _sessionsData;
 
         private readonly string AppDataPath;
 
@@ -34,6 +36,24 @@ namespace SuperLauncher
             }
 
             _applicationsData = wrapper.ApplicationsData.ToList();
+            _sessionsData = wrapper.SessionsData.ToList();
+        }
+
+        public void UpdateSessionData(SessionRuntimeData sessionData)
+        {
+            var sessData = _sessionsData.Find(x => x.AppGUID == sessionData.AppGUID);
+
+            if (sessData != null)
+            {
+                var index = _sessionsData.IndexOf(sessData);
+                _sessionsData[index] = new SessionSerializableData(sessionData);
+            }
+            else
+            {
+                _sessionsData.Add(new SessionSerializableData(sessionData));
+            }
+
+            SaveAppData();
         }
 
         public void UpdateApplicationData(ApplicationRuntimeData applicationData)
@@ -57,7 +77,8 @@ namespace SuperLauncher
         {
             var wrapper = new LauncherDataWrapper
             {
-                ApplicationsData = _applicationsData.ToArray()
+                ApplicationsData = _applicationsData.ToArray(),
+                SessionsData = _sessionsData.ToArray()
             };
 
             var jsonData = JsonConvert.SerializeObject(wrapper);
