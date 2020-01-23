@@ -36,7 +36,13 @@ namespace SuperLauncherWPF
             CoverPanel.Visibility = noApp ? Visibility.Visible : Visibility.Hidden;
             WebBrowser.Visibility = noApp ? Visibility.Hidden : Visibility.Visible;
 
+            app.Launcher.SessionsData.CollectionChanged += SessionsData_CollectionChanged;
             sessionsList.ItemsSource = app.Launcher.SessionsData;
+            UpdateInfoView();
+        }
+
+        private void SessionsData_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
             UpdateInfoView();
         }
 
@@ -102,18 +108,15 @@ namespace SuperLauncherWPF
             UpdateInfoView();
         }
 
-        private void SessionPlaceholder(object sender, RoutedEventArgs e)
-        {
-            var app = Application.Current as App;
-            app.Launcher.AddNewSession(app.Launcher.CurrentApplicationData.AppGUID);
-        }
-
         private void UpdateInfoView()
         {
             var app = Application.Current as App;
             bool noApp = app.Launcher.IsApplicationsListEmpty;
+            bool noSession = app.Launcher.IsSessionsListEmpty;
+
             CoverPanel.Visibility = noApp ? Visibility.Visible : Visibility.Hidden;
             WebBrowser.Visibility = noApp ? Visibility.Hidden : Visibility.Visible;
+            CoverSessionPanel.Visibility = noSession ? Visibility.Visible : Visibility.Hidden;
 
             if (string.IsNullOrEmpty(app.Launcher.CurrentApplicationData.AppName))
                 return;

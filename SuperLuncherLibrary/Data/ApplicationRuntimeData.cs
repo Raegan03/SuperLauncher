@@ -44,6 +44,13 @@ namespace SuperLauncher.Data
             set { _selected = value; NotifyPropertyChanged("Selected"); }
         }
 
+        private DateTime _lastSession;
+        public DateTime LastSession
+        {
+            get { return _lastSession; }
+            set { _lastSession = value; NotifyPropertyChanged("LastSession"); }
+        }
+
 
         public ApplicationRuntimeData() { }
 
@@ -53,8 +60,6 @@ namespace SuperLauncher.Data
             _appName = serializableData.AppName;
             _appExecutablePath = serializableData.AppExecutablePath;
             _appIconPath = serializableData.AppIconPath;
-
-            _selected = false;
         }
 
         public void ChangeData(ApplicationRuntimeData newData)

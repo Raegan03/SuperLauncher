@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.IO;
+using System.Windows.Threading;
 using SuperLauncher.Data;
 
 namespace SuperLauncher
@@ -13,6 +15,7 @@ namespace SuperLauncher
     public class SuperLauncher
     {
         public bool IsApplicationsListEmpty => ApplicationsData.Count == 0;
+        public bool IsSessionsListEmpty => SessionsData.Count == 0;
 
         public ApplicationRuntimeData CurrentApplicationData { get; private set; }
         public ObservableCollection<ApplicationRuntimeData> ApplicationsData { get; private set; }
@@ -21,27 +24,24 @@ namespace SuperLauncher
         private LauncherDatabase _launcherDatabase;
         private ApplicationProcess _currentProcess;
 
-        public SuperLauncher()
+        private Dispatcher _dispatcher;
+
+        public SuperLauncher(Dispatcher dispatcher)
         {
+            _dispatcher = dispatcher;
             _launcherDatabase = new LauncherDatabase();
 
+            SessionsData = new ObservableCollection<SessionRuntimeData>();
+            CurrentApplicationData = new ApplicationRuntimeData();
             ApplicationsData = new ObservableCollection<ApplicationRuntimeData>();
             foreach (var applicationData in _launcherDatabase.ApplicationsData)
             {
                 var runtimeData = new ApplicationRuntimeData(applicationData);
 
                 ApplicationsData.Add(runtimeData);
+                SelectApplication(runtimeData.AppGUID);
             }
 
-            SessionsData = new ObservableCollection<SessionRuntimeData>();
-            foreach (var sessionData in _launcherDatabase.SessionsData)
-            {
-                var runtimeData = new SessionRuntimeData(sessionData);
-
-                SessionsData.Add(runtimeData);
-            }
-
-            CurrentApplicationData = new ApplicationRuntimeData();
             if (ApplicationsData.Count > 0)
             {
                 SelectApplication(ApplicationsData[0].AppGUID);
@@ -77,9 +77,20 @@ namespace SuperLauncher
             _launcherDatabase.UpdateApplicationData(appData);
         }
 
-        public void AddNewSession(Guid applicationGuid)
+        public void AddNewSession(Guid applicationGuid, (DateTime startTime, DateTime endTime) times)
         {
-            //TODO
+            var sessionData = new SessionRuntimeData
+            {
+                SessionGUID = Guid.NewGuid(),
+                AppGUID = applicationGuid,
+                StartSessionDate = times.startTime,
+                EndSessionDate = times.endTime,
+                SessionID = SessionsData.Count + 1
+            };
+
+            CurrentApplicationData.LastSession = times.endTime;
+            SessionsData.Add(sessionData);
+            _launcherDatabase.UpdateSessionData(sessionData);
         }
 
 
@@ -103,6 +114,27 @@ namespace SuperLauncher
 
             CurrentApplicationData = applicationData;
             CurrentApplicationData.Selected = true;
+
+            var sessions = _launcherDatabase.GetApplicationSessions(CurrentApplicationData.AppGUID)
+                .OrderBy(x => x.StartSessionDate)
+                .ToList();
+
+            SessionsData.Clear();
+
+            int index = 1;
+            foreach (var session in sessions)
+            {
+                var runtimeData = new SessionRuntimeData(session)
+                {
+                    SessionID = index
+                };
+
+                SessionsData.Add(runtimeData);
+                index++;
+            }
+
+            if (SessionsData.Count > 0)
+                CurrentApplicationData.LastSession = SessionsData[0].EndSessionDate;
         }
 
         public void StartCurrentApplication()
@@ -118,8 +150,7 @@ namespace SuperLauncher
 
         private void ProcessSessionFeedback(Guid applicationGuid, (DateTime processStart, DateTime processEnd) times)
         {
-            Console.WriteLine(times.processStart + " " + times.processEnd);
-            //AddNewSession(applicationGuid);
+            _dispatcher.Invoke(() => AddNewSession(applicationGuid, times));
         }
     }
 }

@@ -19,7 +19,7 @@ namespace SuperLauncherWPF
         {
             base.OnStartup(e);
 
-            Launcher = new SuperLauncher.SuperLauncher();
+            Launcher = new SuperLauncher.SuperLauncher(Dispatcher);
         }
     }
 }

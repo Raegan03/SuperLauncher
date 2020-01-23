@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
@@ -39,9 +40,14 @@ namespace SuperLauncher
             _sessionsData = wrapper.SessionsData.ToList();
         }
 
+        public List<SessionSerializableData> GetApplicationSessions(Guid applicationGuid)
+        {
+            return _sessionsData.Where(x => x.AppGUID == applicationGuid).ToList();
+        }
+
         public void UpdateSessionData(SessionRuntimeData sessionData)
         {
-            var sessData = _sessionsData.Find(x => x.AppGUID == sessionData.AppGUID);
+            var sessData = _sessionsData.Find(x => x.SessionGUID == sessionData.SessionGUID);
 
             if (sessData != null)
             {

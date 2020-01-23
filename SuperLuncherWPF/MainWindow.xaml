@@ -122,7 +122,7 @@
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center" UIElement.PreviewMouseDown="SelectApplication" Tag="{Binding AppGUID}">
                                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0,0,0,4" FontSize="18" FontFamily="./#Red Hat Display" Text="{Binding AppName}"/>
                                     <Image Name="Test" Height="1" Width="90" Source="/Media/Images/Line.png" />
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0,5,0,0" FontSize="12" FontFamily="./#Red Hat Display">Last opened: XX.XX.XXXX XX:XX</TextBlock>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0,5,0,0" FontSize="12" FontFamily="./#Red Hat Display" Text="{Binding LastSession, StringFormat=Last session: {0:dd.MM.yyyy HH:mm}}"/> <!--Last opened: XX.XX.XXXX XX:XX-->
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>
@@ -186,16 +186,18 @@
                                                 <ColumnDefinition/>
                                                 <ColumnDefinition/>
                                             </Grid.ColumnDefinitions>
-                                            <TextBlock Foreground="White" FontSize="18" FontFamily="./#Red Hat Display" HorizontalAlignment="Center" VerticalAlignment="Center">#1</TextBlock>
+                                            <TextBlock Foreground="White" FontSize="18" FontFamily="./#Red Hat Display" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding SessionID, StringFormat=#{0}}"/>
                                             <TextBlock Foreground="White" FontSize="12" FontFamily="./#Red Hat Display" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Text="{Binding StartSessionDate, StringFormat=Date: {0:dd.MM.yyyy HH:mm}}"/>
-                                            <TextBlock Foreground="White" FontSize="12" FontFamily="./#Red Hat Display" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Text="{Binding MinutesPassed, StringFormat=Duration: {0}min}"/>
+                                            <TextBlock Foreground="White" FontSize="12" FontFamily="./#Red Hat Display" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Text="{Binding TotalDurationMinutes, StringFormat=Duration: {0}min}"/>
                                         </Grid>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
-                            <Button Click="SessionPlaceholder">Placeholder add</Button>
                         </StackPanel>
                     </ScrollViewer>
+                    <DockPanel Background="#FF3F3F3F" Grid.Row="1" Name="CoverSessionPanel" Visibility="Hidden">
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/SuperLauncherWPF;component/Media/Fonts/#Red Hat Display Medium" FontSize="20" Foreground="White">Not started yet</Label>
+                    </DockPanel>
                 </Grid>
                 <Grid Background="#FF555555" Grid.Column="1" Grid.Row="1">
                     <Grid.RowDefinitions>

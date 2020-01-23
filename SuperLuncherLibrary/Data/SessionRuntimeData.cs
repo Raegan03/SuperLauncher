@@ -19,6 +19,13 @@ namespace SuperLauncher.Data
             set { _appGUID = value; NotifyPropertyChanged("AppGUID"); }
         }
 
+        private int _sessionId;
+        public int SessionID
+        {
+            get { return _sessionId; }
+            set { _sessionId = value; NotifyPropertyChanged("SessionID"); }
+        }
+
         private DateTime _startSessionDate;
         public DateTime StartSessionDate
         {
@@ -33,7 +40,7 @@ namespace SuperLauncher.Data
             set { _endSessionDate = value; NotifyPropertyChanged("EndSessionDate"); }
         }
 
-        public double TotalDurationMinutes => (EndSessionDate - StartSessionDate).TotalMinutes;
+        public int TotalDurationMinutes => (int)(EndSessionDate - StartSessionDate).TotalMinutes;
 
         public SessionRuntimeData() { }
 
