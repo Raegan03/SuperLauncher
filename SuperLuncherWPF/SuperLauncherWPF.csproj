@@ -164,7 +164,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\Images\Achievement_Placeholder.png" />
+    <Resource Include="Media\Images\Achievement_1.png" />
+    <Resource Include="Media\Images\Achievement_2.png" />
+    <Resource Include="Media\Images\Achievement_3.png" />
+    <Resource Include="Media\Images\Achievement_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\Images\Achievement_Lock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

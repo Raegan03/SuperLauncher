@@ -128,6 +128,7 @@ namespace SuperLauncherWPF
             CurrentAppIcon.Source = imgSource;
 
             WebBrowser.Navigate($"https://www.google.com/search?q={app.Launcher.CurrentApplicationData.AppName}");
+            UpdateAchievements();
         }
 
         private void CurrentAppSettings_Click(object sender, RoutedEventArgs e)
@@ -139,6 +140,39 @@ namespace SuperLauncherWPF
         {
             var app = Application.Current as App;
             app.Launcher.StartCurrentApplication();
+        }
+
+        private void UpdateAchievements()
+        {
+            bool ach1 = true;
+            var Ach_1_Uri = new Uri(ach1 
+                ? "/SuperLauncherWPF;component/Media/Images/Achievement_1.png" 
+                : "/SuperLauncherWPF;component/Media/Images/Achievement_Lock.png", UriKind.Relative);
+
+            var src = new BitmapImage(Ach_1_Uri);
+            Ach_1_Img.Source = new BitmapImage(Ach_1_Uri);
+            Ach_1_Label.Content = ach1 ? "First Start" : "???";
+
+            bool ach2 = false;
+            var Ach_2_Uri = new Uri(ach2
+                ? "/SuperLauncherWPF;component/Media/Images/Achievement_2.png"
+                : "/SuperLauncherWPF;component/Media/Images/Achievement_Lock.png", UriKind.Relative);
+            Ach_2_Img.Source = new BitmapImage(Ach_2_Uri);
+            Ach_2_Label.Content = ach2 ? "Getting familiar" : "???";
+
+            bool ach3 = true;
+            var Ach_3_Uri = new Uri(ach3
+                ? "/SuperLauncherWPF;component/Media/Images/Achievement_3.png"
+                : "/SuperLauncherWPF;component/Media/Images/Achievement_Lock.png", UriKind.Relative);
+            Ach_3_Img.Source = new BitmapImage(Ach_3_Uri);
+            Ach_3_Label.Content = ach3 ? "Here we go again" : "???";
+
+            bool ach4 = false;
+            var Ach_4_Uri = new Uri(ach4
+                ? "/SuperLauncherWPF;component/Media/Images/Achievement_4.png"
+                : "/SuperLauncherWPF;component/Media/Images/Achievement_Lock.png", UriKind.Relative);
+            Ach_4_Img.Source = new BitmapImage(Ach_4_Uri);
+            Ach_4_Label.Content = ach4 ? "Old pal" : "???";
         }
     }
 }
