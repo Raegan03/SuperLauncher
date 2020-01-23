@@ -54,6 +54,8 @@
     <Compile Include="Data\LauncherDataWrapper.cs" />
     <Compile Include="Data\SessionRuntimeData.cs" />
     <Compile Include="Data\SessionSerializableData.cs" />
+    <Compile Include="AchievementCheckers.cs" />
+    <Compile Include="IAchievementChecker.cs" />
     <Compile Include="LauncherDatabase.cs" />
     <Compile Include="LauncherHelper.cs" />
     <Compile Include="SuperLauncher.cs" />
