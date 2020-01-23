@@ -36,6 +36,8 @@ namespace SuperLauncherWPF
             bool noApp = app.Launcher.SuperLauncherAppDatas.Count == 0;
             CoverPanel.Visibility = noApp ? Visibility.Visible : Visibility.Hidden;
             WebBrowser.Visibility = noApp ? Visibility.Hidden : Visibility.Visible;
+
+            sessionsList.ItemsSource = app.Launcher.SuperLauncherSessionDatas;
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -149,6 +151,12 @@ namespace SuperLauncherWPF
 
             var app = Application.Current as App;
             app.Launcher.SelectApplication((Guid)fe.Tag);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var app = Application.Current as App;
+            app.Launcher.AddNewSession(app.Launcher.CurrentSelectedApp.AppGUID);
         }
     }
 

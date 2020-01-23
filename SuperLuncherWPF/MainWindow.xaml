@@ -174,17 +174,26 @@
                     <DockPanel Background="#FF222222">
                         <Label Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontFamily="./#Red Hat Display Medium">Sessions</Label>
                     </DockPanel>
-                    <ScrollViewer Grid.Row="1">
-                        <ItemsControl Name="sessionsList">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel>
-                                        <DockPanel>
-                                        </DockPanel>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
+                    <ScrollViewer Grid.Row="1" MaxHeight="218" VerticalScrollBarVisibility="Auto">
+                        <StackPanel>
+                            <ItemsControl Name="sessionsList">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Height="50">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50"/>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Foreground="White" FontSize="18" FontFamily="./#Red Hat Display" HorizontalAlignment="Center" VerticalAlignment="Center">#1</TextBlock>
+                                            <TextBlock Foreground="White" FontSize="12" FontFamily="./#Red Hat Display" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Text="{Binding StartSessionDate, StringFormat=Date: {0:dd.MM.yyyy HH:mm}}"/>
+                                            <TextBlock Foreground="White" FontSize="12" FontFamily="./#Red Hat Display" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Text="{Binding MinutesPassed, StringFormat=Duration: {0}min}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <Button Click="Button_Click">Placeholder add</Button>
+                        </StackPanel>
                     </ScrollViewer>
                 </Grid>
                 <Grid Background="#FF555555" Grid.Column="1" Grid.Row="1">

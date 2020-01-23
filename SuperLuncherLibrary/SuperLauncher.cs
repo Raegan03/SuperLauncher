@@ -16,12 +16,21 @@ namespace SuperLauncher
         public ObservableCollection<SuperLauncherAppData> SuperLauncherAppDatas => 
             _superLauncherContext.SuperLauncherAppDatas;
 
+        public ObservableCollection<SuperLauncherSessionData> SuperLauncherSessionDatas =>
+            _sessionManager.SuperLauncherSessionDatas;
+
         private SuperLauncherContext _superLauncherContext;
+        private SuperLauncherSessionsManager _sessionManager;
 
         public SuperLauncher()
         {
             _superLauncherContext = new SuperLauncherContext();
+
+            _sessionManager = new SuperLauncherSessionsManager();
         }
+
+        public void AddNewSession(Guid applicationGuid)
+            => _sessionManager.AddNewSession(applicationGuid);
 
         public void AddNewApplication(string applicationPath)
             => _superLauncherContext.AddNewApplication(applicationPath);
