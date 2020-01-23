@@ -28,7 +28,6 @@ namespace SuperLauncherWPF
         public MainWindow()
         {
             InitializeComponent();
-            WebBrowser.Navigate("http://google.com");
 
             var app = Application.Current as App;
             applicationsList.ItemsSource = app.Launcher.ApplicationsData;
@@ -119,8 +118,7 @@ namespace SuperLauncherWPF
             ImageSource imgSource = new BitmapImage(uri);
             CurrentAppIcon.Source = imgSource;
 
-            CurrentAppPlay.Tag = app.Launcher.CurrentApplicationData.AppGUID;
-            CurrentAppSettings.Tag = app.Launcher.CurrentApplicationData.AppGUID;
+            WebBrowser.Navigate($"https://www.google.com/search?q={app.Launcher.CurrentApplicationData.AppName}");
         }
 
         private void CurrentAppSettings_Click(object sender, RoutedEventArgs e)
@@ -130,7 +128,8 @@ namespace SuperLauncherWPF
 
         private void CurrentAppPlay_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
+            var app = Application.Current as App;
+            app.Launcher.StartCurrentApplication();
         }
     }
 }

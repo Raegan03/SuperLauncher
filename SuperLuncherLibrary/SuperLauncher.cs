@@ -25,6 +25,7 @@ namespace SuperLauncher
         public ObservableCollection<ApplicationRuntimeData> ApplicationsData { get; private set; }
 
         private LauncherDatabase _launcherDatabase;
+        private ApplicationProcess _currentProcess;
 
         public SuperLauncher()
         {
@@ -100,6 +101,23 @@ namespace SuperLauncher
 
             CurrentApplicationData = applicationData;
             CurrentApplicationData.Selected = true;
+        }
+
+        public void StartCurrentApplication()
+        {
+            if(_currentProcess != null)
+            {
+                _currentProcess.Stop();
+            }
+
+            _currentProcess = new ApplicationProcess(CurrentApplicationData.AppGUID, 
+                CurrentApplicationData.AppExecutablePath, ProcessSessionFeedback);
+        }
+
+        private void ProcessSessionFeedback(Guid applicationGuid, (DateTime processStart, DateTime processEnd) times)
+        {
+            Console.WriteLine(times.processStart + " " + times.processEnd);
+            //AddNewSession(applicationGuid);
         }
     }
 }

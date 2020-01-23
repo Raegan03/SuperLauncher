@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SuperLauncher.Data;
 using Newtonsoft.Json;
+using System.Threading;
 
 namespace SuperLauncher
 {
@@ -54,7 +55,6 @@ namespace SuperLauncher
             };
 
             SuperLauncherSessionDatas.Add(newSession);
-
             SaveData();
         }
 
