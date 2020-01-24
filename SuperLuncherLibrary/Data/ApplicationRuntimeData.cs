@@ -4,11 +4,13 @@ using System.ComponentModel;
 namespace SuperLauncher.Data
 {
     /// <summary>
-    /// App Data class
-    /// Keeps app data, is serializable
+    /// Runtime version of application data used to save state of application while Launcher is running
     /// </summary>
     public class ApplicationRuntimeData : INotifyPropertyChanged
     {
+        /// <summary>
+        /// App indetifier
+        /// </summary>
         private Guid _appGUID;
         public Guid AppGUID
         {
@@ -16,6 +18,9 @@ namespace SuperLauncher.Data
             set { _appGUID = value; NotifyPropertyChanged("AppGUID"); }
         }
 
+        /// <summary>
+        /// App name, based on executable file name but can be changed
+        /// </summary>
         private string _appName;
         public string AppName
         {
@@ -23,6 +28,9 @@ namespace SuperLauncher.Data
             set { _appName = value; NotifyPropertyChanged("AppName"); }
         }
 
+        /// <summary>
+        /// App exe path, use by process
+        /// </summary>
         private string _appExecutablePath;
         public string AppExecutablePath
         {
@@ -30,6 +38,9 @@ namespace SuperLauncher.Data
             set { _appExecutablePath = value; NotifyPropertyChanged("AppExecutablePath"); }
         }
 
+        /// <summary>
+        /// App icon path, use by MainView
+        /// </summary>
         private string _appIconPath;
         public string AppIconPath
         {
@@ -37,6 +48,9 @@ namespace SuperLauncher.Data
             set { _appIconPath = value; NotifyPropertyChanged("AppIconPath"); }
         }
 
+        /// <summary>
+        /// If app is current app selected is equal true
+        /// </summary>
         private bool _selected;
         public bool Selected
         {
@@ -44,6 +58,9 @@ namespace SuperLauncher.Data
             set { _selected = value; NotifyPropertyChanged("Selected"); }
         }
 
+        /// <summary>
+        /// Date of last session copied from sessions list
+        /// </summary>
         private DateTime _lastSession;
         public DateTime LastSession
         {
@@ -54,6 +71,10 @@ namespace SuperLauncher.Data
 
         public ApplicationRuntimeData() { }
 
+        /// <summary>
+        /// Contructor made for transitioning from serializable to runtime data easier and safer
+        /// </summary>
+        /// <param name="serializableData">Serialization data to copy from</param>
         public ApplicationRuntimeData(ApplicationSerializableData serializableData)
         {
             _appGUID = serializableData.AppGUID;
@@ -62,15 +83,9 @@ namespace SuperLauncher.Data
             _appIconPath = serializableData.AppIconPath;
         }
 
-        public void ChangeData(ApplicationRuntimeData newData)
-        {
-            AppGUID = newData.AppGUID;
-            AppName = newData.AppName;
-            AppExecutablePath = newData.AppExecutablePath;
-            AppIconPath = newData.AppIconPath;
-            Selected = newData.Selected;
-        }
-
+        /// <summary>
+        /// WPF Notification handler, use for ItemsControl to react on data changes
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {

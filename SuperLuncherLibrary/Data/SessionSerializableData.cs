@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace SuperLauncher.Data
 {
+    /// <summary>
+    /// Serializable version of session data used in Netwonsoft.Json to create json file
+    /// </summary>
     [Serializable]
     public class SessionSerializableData
     {

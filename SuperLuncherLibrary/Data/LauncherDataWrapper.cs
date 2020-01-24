@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace SuperLauncher.Data
 {
+    /// <summary>
+    /// Wrapper for all serialization data to save them in one file which is easier to maintain
+    /// </summary>
     [Serializable]
     internal class LauncherDataWrapper
     {

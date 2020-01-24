@@ -7,6 +7,10 @@ using SuperLauncher.Data;
 
 namespace SuperLauncher
 {
+    /// <summary>
+    /// Launcher data base class
+    /// On creation it's trying to load all data stored on PC and if there is no data it creates folders for it
+    /// </summary>
     internal class LauncherDatabase
     {
         private const string APP_DATA_FILENAME = "AppData.data";
@@ -40,11 +44,20 @@ namespace SuperLauncher
             _sessionsData = wrapper.SessionsData.ToList();
         }
 
+        /// <summary>
+        /// Returns sessions list associated with applicationGuid
+        /// </summary>
+        /// <param name="applicationGuid">GUID of current application</param>
+        /// <returns></returns>
         public List<SessionSerializableData> GetApplicationSessions(Guid applicationGuid)
         {
             return _sessionsData.Where(x => x.AppGUID == applicationGuid).ToList();
         }
 
+        /// <summary>
+        /// Updates session data if exists and add if is new, saves it on drive
+        /// </summary>
+        /// <param name="sessionData">Session data to be updated/added</param>
         public void UpdateSessionData(SessionRuntimeData sessionData)
         {
             var sessData = _sessionsData.Find(x => x.SessionGUID == sessionData.SessionGUID);
@@ -62,6 +75,10 @@ namespace SuperLauncher
             SaveAppData();
         }
 
+        /// <summary>
+        /// Removes all data associated with application (app data and all sessions)
+        /// </summary>
+        /// <param name="applicationGuid">GUID of application that should be deleted</param>
         public void DeleteApplicationData(Guid applicationGuid)
         {
             var sessions = _sessionsData.Where(x => x.AppGUID == applicationGuid).ToList();
@@ -75,6 +92,10 @@ namespace SuperLauncher
             SaveAppData();
         }
 
+        /// <summary>
+        /// Updates application data if exists and add if is new, saves it on drive
+        /// </summary>
+        /// <param name="applicationData">Application data to be updated</param>
         public void UpdateApplicationData(ApplicationRuntimeData applicationData)
         {
             var appData = _applicationsData.Find(x => x.AppGUID == applicationData.AppGUID);
@@ -92,6 +113,9 @@ namespace SuperLauncher
             SaveAppData();
         }
 
+        /// <summary>
+        /// Saves application and sessions data on drive in local app location
+        /// </summary>
         private void SaveAppData()
         {
             var wrapper = new LauncherDataWrapper

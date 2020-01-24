@@ -4,8 +4,7 @@ using Newtonsoft.Json;
 namespace SuperLauncher.Data
 {
     /// <summary>
-    /// App Data class
-    /// Keeps app data, is serializable
+    /// Serializable version of application data used in Netwonsoft.Json to create json file
     /// </summary>
     [Serializable]
     public class ApplicationSerializableData

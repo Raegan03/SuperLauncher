@@ -10,8 +10,10 @@ using SuperLauncher.Data;
 namespace SuperLauncher
 {
     /// <summary>
-    /// Main Super Launcher class
-    /// Creates all others helper classes for GUI framwork (WPF) to render
+    /// Main Library class
+    /// Contains referances to most important parts of Launcher
+    /// Manage all runtime data and processes
+    /// Only class directly connected with WPF which used it for getting and modifing data
     /// </summary>
     public class SuperLauncher
     {
@@ -34,6 +36,11 @@ namespace SuperLauncher
 
         private Dispatcher _dispatcher;
 
+        /// <summary>
+        /// Creates database which loads data from saved files, prepares session and achievements
+        /// Tries to select current application if there is any loaded
+        /// </summary>
+        /// <param name="dispatcher">Allows to start WPF connected code from different Thread on UI Thread</param>
         public SuperLauncher(Dispatcher dispatcher)
         {
             _dispatcher = dispatcher;
@@ -72,6 +79,11 @@ namespace SuperLauncher
             }
         }
 
+        /// <summary>
+        /// Based on executable application path it creates application data and saves icon for application
+        /// Application is also automaticaly selected as current
+        /// </summary>
+        /// <param name="applicationPath">Path to application user wants to add</param>
         public void AddNewApplication(string applicationPath)
         {
             var appData = new ApplicationRuntimeData
@@ -101,6 +113,13 @@ namespace SuperLauncher
             _launcherDatabase.UpdateApplicationData(appData);
         }
 
+        /// <summary>
+        /// Adds new session under current application
+        /// Called on process exit callback
+        /// Revalidate achievements as they are all depended on sessions
+        /// </summary>
+        /// <param name="applicationGuid">Current application guid</param>
+        /// <param name="times">Start and End process time</param>
         public void AddNewSession(Guid applicationGuid, (DateTime startTime, DateTime endTime) times)
         {
             var sessionData = new SessionRuntimeData
@@ -125,6 +144,11 @@ namespace SuperLauncher
             ViewUpdateReqested?.Invoke();
         }
 
+        /// <summary>
+        /// Selects application as current
+        /// Reloads sessions data and revalidates achievements
+        /// </summary>
+        /// <param name="applicationGuid">Guid of application user wants to select</param>
         public void SelectApplication(Guid applicationGuid)
         {
             ApplicationRuntimeData applicationData = null;
@@ -174,6 +198,10 @@ namespace SuperLauncher
                 CurrentApplicationData.LastSession = SessionsData[0].EndSessionDate;
         }
 
+        /// <summary>
+        /// Delets current application and tries to select new
+        /// If there is no other application we aren't selecting any
+        /// </summary>
         public void DeleteCurrentApp()
         {
             _launcherDatabase.DeleteApplicationData(CurrentApplicationData.AppGUID);
@@ -189,6 +217,13 @@ namespace SuperLauncher
             }
         }
 
+
+        /// <summary>
+        /// Updates current application with new data passed by user
+        /// </summary>
+        /// <param name="newAppName">New name for application</param>
+        /// <param name="newAppPath">New path to application executable</param>
+        /// <param name="newAppIconPath">New path to icon associated with application</param>
         public void UpdateCurrentApplication(string newAppName, string newAppPath, string newAppIconPath)
         {
             CurrentApplicationData.AppName = newAppName;
@@ -198,6 +233,9 @@ namespace SuperLauncher
             _launcherDatabase.UpdateApplicationData(CurrentApplicationData);
         }
 
+        /// <summary>
+        /// Starts currently selected application
+        /// </summary>
         public void StartCurrentApplication()
         {
             if(_currentProcess != null)
@@ -211,6 +249,9 @@ namespace SuperLauncher
             ApplicationStarted?.Invoke();
         }
 
+        /// <summary>
+        /// Stops application process if it's exists
+        /// </summary>
         public void StopCurrentApplication()
         {
             if (_currentProcess != null)
@@ -220,6 +261,12 @@ namespace SuperLauncher
             }
         }
 
+        /// <summary>
+        /// Application exited process callback
+        /// Fired when process is closed
+        /// </summary>
+        /// <param name="applicationGuid">Close application guid</param>
+        /// <param name="times">Start and End time of process</param>
         private void ProcessSessionFeedback(Guid applicationGuid, (DateTime processStart, DateTime processEnd) times)
         {
             _dispatcher.Invoke(() => 

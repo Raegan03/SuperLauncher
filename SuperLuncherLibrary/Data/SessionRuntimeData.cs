@@ -5,6 +5,9 @@ namespace SuperLauncher.Data
 {
     public class SessionRuntimeData : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Session unique identifier
+        /// </summary>
         private Guid _sessionGuid;
         public Guid SessionGUID
         {
@@ -12,6 +15,9 @@ namespace SuperLauncher.Data
             set { _sessionGuid = value; NotifyPropertyChanged("SessionGuid"); }
         }
 
+        /// <summary>
+        /// Identifier of app that session belongs to
+        /// </summary>
         private Guid _appGUID;
         public Guid AppGUID
         {
@@ -19,6 +25,9 @@ namespace SuperLauncher.Data
             set { _appGUID = value; NotifyPropertyChanged("AppGUID"); }
         }
 
+        /// <summary>
+        /// Session ID used to show session index in WPF window
+        /// </summary>
         private int _sessionId;
         public int SessionID
         {
@@ -26,6 +35,9 @@ namespace SuperLauncher.Data
             set { _sessionId = value; NotifyPropertyChanged("SessionID"); }
         }
 
+        /// <summary>
+        /// Process start date 
+        /// </summary>
         private DateTime _startSessionDate;
         public DateTime StartSessionDate
         {
@@ -33,6 +45,9 @@ namespace SuperLauncher.Data
             set { _startSessionDate = value; NotifyPropertyChanged("StartSessionDate"); }
         }
 
+        /// <summary>
+        /// Process end date
+        /// </summary>
         private DateTime _endSessionDate;
         public DateTime EndSessionDate
         {
@@ -40,10 +55,17 @@ namespace SuperLauncher.Data
             set { _endSessionDate = value; NotifyPropertyChanged("EndSessionDate"); }
         }
 
+        /// <summary>
+        /// Duration of session calculated from start and end date, in minutes rounded 
+        /// </summary>
         public int TotalDurationMinutes => (int)(EndSessionDate - StartSessionDate).TotalMinutes;
 
         public SessionRuntimeData() { }
 
+        /// <summary>
+        /// Contructor made for transitioning from runtime to serializable data easier and safer
+        /// </summary>
+        /// <param name="serializableData">Runtime data to copy from</param>
         public SessionRuntimeData(SessionSerializableData serializableData) 
         {
             SessionGUID = serializableData.SessionGUID;
@@ -52,6 +74,9 @@ namespace SuperLauncher.Data
             EndSessionDate = serializableData.EndSessionDate;
         }
 
+        /// <summary>
+        /// WPF Notification handler, use for ItemsControl to react on data changes
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {

@@ -3,6 +3,9 @@ using System.Diagnostics;
 
 namespace SuperLauncher
 {
+    /// <summary>
+    /// Wrapper class for Process started for application
+    /// </summary>
     internal class ApplicationProcess
     {
         private Process _applicationProcess;
@@ -11,6 +14,12 @@ namespace SuperLauncher
         private Action<Guid, (DateTime processStart, DateTime processEnd)> _processCallback;
         private bool _exited;
 
+        /// <summary>
+        /// Creates process for desired application and starts listening for exit event
+        /// </summary>
+        /// <param name="applicationGuid">Guid of application that should be started</param>
+        /// <param name="executablePath">Path to application that should be started</param>
+        /// <param name="processCallback">Callback on process exited</param>
         public ApplicationProcess(Guid applicationGuid, string executablePath, 
             Action<Guid, (DateTime processStart, DateTime processEnd)> processCallback)
         {
@@ -27,6 +36,9 @@ namespace SuperLauncher
             _applicationProcess.Start();
         }
 
+        /// <summary>
+        /// Making sure that everything was cleaned
+        /// </summary>
         ~ApplicationProcess()
         {
             if (_exited)
@@ -38,12 +50,20 @@ namespace SuperLauncher
             _applicationProcess?.Dispose();
         }
 
+        /// <summary>
+        /// Error handling
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _applicationProcess_ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
             _exited = true;
             _applicationProcess.Dispose();
         }
 
+        /// <summary>
+        /// Kills application if it's still running
+        /// </summary>
         public void Stop()
         {
             if (_exited || _applicationProcess.HasExited)
@@ -52,6 +72,11 @@ namespace SuperLauncher
             _applicationProcess.Kill();
         }
 
+        /// <summary>
+        /// Callback on application closed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _applicationProcess_Exited(object sender, EventArgs e)
         {
             if (_exited)
