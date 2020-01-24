@@ -8,6 +8,10 @@ Jan Gajewski (Lider) <br>
 Marcin Putniorz <br>
 Mariusz Kaczmarczyk <br>
 
+## Documentation
+
+https://raegan03.github.io/SuperLauncher/docs
+
 ## Screens
 
 ### Figma project
