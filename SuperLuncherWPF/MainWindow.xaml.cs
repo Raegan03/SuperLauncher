@@ -140,7 +140,11 @@ namespace SuperLauncherWPF
 
         private void CurrentAppSettings_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
+            var settingsWindow = new SettingsWindow();
+            if(settingsWindow.ShowDialog() == true)
+            {
+                //TODO
+            }
         }
 
         private void CurrentAppPlay_Click(object sender, RoutedEventArgs e)
