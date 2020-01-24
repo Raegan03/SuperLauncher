@@ -4,7 +4,7 @@ using SuperLauncher.Data;
 
 namespace SuperLauncher
 {
-    internal class FirstAchievementChecker : IAchievementChecker
+    public class FirstAchievementChecker : IAchievementChecker
     {
         public int AchievementID => 1;
 
@@ -14,7 +14,7 @@ namespace SuperLauncher
         }
     }
 
-    internal class SecondAchievementChecker : IAchievementChecker
+    public class SecondAchievementChecker : IAchievementChecker
     {
         public int AchievementID => 2;
 
@@ -24,7 +24,7 @@ namespace SuperLauncher
         }
     }
 
-    internal class ThirdAchievementChecker : IAchievementChecker
+    public class ThirdAchievementChecker : IAchievementChecker
     {
         public int AchievementID => 3;
 
@@ -34,7 +34,7 @@ namespace SuperLauncher
         }
     }
 
-    internal class FourAchievementChecker : IAchievementChecker
+    public class FourAchievementChecker : IAchievementChecker
     {
         public int AchievementID => 4;
 
