@@ -108,38 +108,41 @@
                 <ColumnDefinition Width="320"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel Background="#FF222222" MinHeight="738">
-                <ItemsControl Name="applicationsList">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Height="80" VerticalAlignment="Top" Margin="0, 5" >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1.5*"/>
-                                    <ColumnDefinition Width="3.5*"/>
-                                </Grid.ColumnDefinitions>
-                                <StackPanel Grid.ColumnSpan="2" Background="#FF444444" Visibility="{Binding Selected, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource visibilityConverter}}"/>
-                                <Image Height="64" Width="64" Source="{Binding AppIconPath}" UIElement.PreviewMouseDown="SelectApplication" Tag="{Binding AppGUID}" />
-                                <StackPanel Grid.Column="1" VerticalAlignment="Center" UIElement.PreviewMouseDown="SelectApplication" Tag="{Binding AppGUID}">
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0,0,0,4" FontSize="18" FontFamily="./#Red Hat Display" Text="{Binding AppName}"/>
-                                    <Image Name="Test" Height="1" Width="90" Source="/Media/Images/Line.png" />
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0,5,0,0" FontSize="12" FontFamily="./#Red Hat Display" Text="{Binding LastSession, StringFormat=Last session: {0:dd.MM.yyyy HH:mm}}"/> <!--Last opened: XX.XX.XXXX XX:XX-->
-                                </StackPanel>
-                            </Grid>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-                <Button Name="NewAppButton" Click="AddNewApplication" BorderBrush="{x:Null}" Padding="0" BorderThickness="0" Background="#FF444444" Foreground="White" Height="50" Margin="0">
-                    Add new application
-                </Button>
-            </StackPanel>
+            <ScrollViewer MaxHeight="738" VerticalScrollBarVisibility="Auto">
+                <StackPanel Background="#FF222222" MinHeight="738">
+                    <ItemsControl Name="applicationsList">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Height="80" VerticalAlignment="Top" Margin="0, 5" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1.5*"/>
+                                        <ColumnDefinition Width="3.5*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.ColumnSpan="2" Background="#FF444444" Visibility="{Binding Selected, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource visibilityConverter}}"/>
+                                    <Image Height="64" Width="64" Source="{Binding AppIconPath}" UIElement.PreviewMouseDown="SelectApplication" Tag="{Binding AppGUID}" />
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center" UIElement.PreviewMouseDown="SelectApplication" Tag="{Binding AppGUID}">
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0,0,0,4" FontSize="18" FontFamily="./#Red Hat Display" Text="{Binding AppName}"/>
+                                        <Image Name="Test" Height="1" Width="90" Source="/Media/Images/Line.png" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0,5,0,0" FontSize="12" FontFamily="./#Red Hat Display" Text="{Binding LastSession, StringFormat=Last session: {0:dd.MM.yyyy HH:mm}}"/>
+                                        <!--Last opened: XX.XX.XXXX XX:XX-->
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <Button Name="NewAppButton" Click="AddNewApplication" BorderBrush="{x:Null}" Padding="0" BorderThickness="0" Background="#FF444444" Foreground="White" Height="50" Margin="0">
+                        Add new application
+                    </Button>
+                </StackPanel>
+            </ScrollViewer>
             <Grid Background="#FF3F3F3F" MinHeight="738" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" MaxWidth="480"/>
                     <ColumnDefinition Width="1*" MaxWidth="480"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="3*" MaxHeight="500"/>
+                    <RowDefinition Height="238" MaxHeight="238"/>
+                    <RowDefinition Height="530" MaxHeight="530"/>
                 </Grid.RowDefinitions>
                 <Grid Background="#FF222222" Margin="0">
                     <Grid.ColumnDefinitions>

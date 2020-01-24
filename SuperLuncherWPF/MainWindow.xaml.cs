@@ -140,10 +140,15 @@ namespace SuperLauncherWPF
 
         private void CurrentAppSettings_Click(object sender, RoutedEventArgs e)
         {
+            var app = Application.Current as App;
+
             var settingsWindow = new SettingsWindow();
             if(settingsWindow.ShowDialog() == true)
             {
-                //TODO
+                app.Launcher.UpdateCurrentApplication(settingsWindow.TemporaryName,
+                    settingsWindow.TemporaryAppPath, settingsWindow.TemporaryAppIconPath);
+
+                UpdateInfoView();
             }
         }
 

@@ -123,7 +123,6 @@ namespace SuperLauncher
             ViewUpdateReqested?.Invoke();
         }
 
-
         public void SelectApplication(Guid applicationGuid)
         {
             ApplicationRuntimeData applicationData = null;
@@ -171,6 +170,15 @@ namespace SuperLauncher
 
             if (SessionsData.Count > 0)
                 CurrentApplicationData.LastSession = SessionsData[0].EndSessionDate;
+        }
+
+        public void UpdateCurrentApplication(string newAppName, string newAppPath, string newAppIconPath)
+        {
+            CurrentApplicationData.AppName = newAppName;
+            CurrentApplicationData.AppIconPath = newAppIconPath;
+            CurrentApplicationData.AppExecutablePath = newAppPath;
+
+            _launcherDatabase.UpdateApplicationData(CurrentApplicationData);
         }
 
         public void StartCurrentApplication()

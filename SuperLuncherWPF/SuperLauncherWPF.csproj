@@ -179,5 +179,8 @@
   <ItemGroup>
     <Resource Include="Media\Images\Achievement_Lock.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\Images\SettingsIcon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
