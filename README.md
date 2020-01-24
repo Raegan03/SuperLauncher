@@ -10,7 +10,7 @@ Mariusz Kaczmarczyk <br>
 
 ## Documentation
 
-https://raegan03.github.io/SuperLauncher/docs
+https://raegan03.github.io/SuperLauncher/
 
 ## Screens
 
