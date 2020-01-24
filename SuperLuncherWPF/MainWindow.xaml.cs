@@ -39,6 +39,13 @@ namespace SuperLauncherWPF
             app.Launcher.SessionsData.CollectionChanged += SessionsData_CollectionChanged;
             sessionsList.ItemsSource = app.Launcher.SessionsData;
             UpdateInfoView();
+
+            app.Launcher.ViewUpdateReqested += Launcher_ViewUpdateReqested;
+        }
+
+        private void Launcher_ViewUpdateReqested()
+        {
+            UpdateInfoView();
         }
 
         private void SessionsData_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -144,30 +151,30 @@ namespace SuperLauncherWPF
 
         private void UpdateAchievements()
         {
-            bool ach1 = true;
+            var app = Application.Current as App;
+
+            bool ach1 = app.Launcher.CurrentApplicationAchievements[1];
             var Ach_1_Uri = new Uri(ach1 
                 ? "/SuperLauncherWPF;component/Media/Images/Achievement_1.png" 
                 : "/SuperLauncherWPF;component/Media/Images/Achievement_Lock.png", UriKind.Relative);
-
-            var src = new BitmapImage(Ach_1_Uri);
             Ach_1_Img.Source = new BitmapImage(Ach_1_Uri);
             Ach_1_Label.Content = ach1 ? "First Start" : "???";
 
-            bool ach2 = false;
+            bool ach2 = app.Launcher.CurrentApplicationAchievements[2];
             var Ach_2_Uri = new Uri(ach2
                 ? "/SuperLauncherWPF;component/Media/Images/Achievement_2.png"
                 : "/SuperLauncherWPF;component/Media/Images/Achievement_Lock.png", UriKind.Relative);
             Ach_2_Img.Source = new BitmapImage(Ach_2_Uri);
             Ach_2_Label.Content = ach2 ? "Getting familiar" : "???";
 
-            bool ach3 = true;
+            bool ach3 = app.Launcher.CurrentApplicationAchievements[3];
             var Ach_3_Uri = new Uri(ach3
                 ? "/SuperLauncherWPF;component/Media/Images/Achievement_3.png"
                 : "/SuperLauncherWPF;component/Media/Images/Achievement_Lock.png", UriKind.Relative);
             Ach_3_Img.Source = new BitmapImage(Ach_3_Uri);
             Ach_3_Label.Content = ach3 ? "Here we go again" : "???";
 
-            bool ach4 = false;
+            bool ach4 = app.Launcher.CurrentApplicationAchievements[4];
             var Ach_4_Uri = new Uri(ach4
                 ? "/SuperLauncherWPF;component/Media/Images/Achievement_4.png"
                 : "/SuperLauncherWPF;component/Media/Images/Achievement_Lock.png", UriKind.Relative);

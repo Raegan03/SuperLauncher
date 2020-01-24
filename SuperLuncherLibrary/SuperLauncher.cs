@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Threading;
@@ -14,12 +15,17 @@ namespace SuperLauncher
     /// </summary>
     public class SuperLauncher
     {
+        public event Action ViewUpdateReqested;
+
         public bool IsApplicationsListEmpty => ApplicationsData.Count == 0;
         public bool IsSessionsListEmpty => SessionsData.Count == 0;
 
         public ApplicationRuntimeData CurrentApplicationData { get; private set; }
         public ObservableCollection<ApplicationRuntimeData> ApplicationsData { get; private set; }
         public ObservableCollection<SessionRuntimeData> SessionsData { get; private set; }
+
+        public Dictionary<int, bool> CurrentApplicationAchievements;
+        public Dictionary<int, IAchievementChecker> AchievementsCheckers;
 
         private LauncherDatabase _launcherDatabase;
         private ApplicationProcess _currentProcess;
@@ -30,6 +36,22 @@ namespace SuperLauncher
         {
             _dispatcher = dispatcher;
             _launcherDatabase = new LauncherDatabase();
+
+            AchievementsCheckers = new Dictionary<int, IAchievementChecker>
+            {
+                { 1, new FirstAchievementChecker() },
+                { 2, new SecondAchievementChecker() },
+                { 3, new ThirdAchievementChecker() },
+                { 4, new FourAchievementChecker() },
+            };
+
+            CurrentApplicationAchievements = new Dictionary<int, bool>
+            {
+                { 1, false },
+                { 2, false },
+                { 3, false },
+                { 4, false },
+            };
 
             SessionsData = new ObservableCollection<SessionRuntimeData>();
             CurrentApplicationData = new ApplicationRuntimeData();
@@ -89,8 +111,16 @@ namespace SuperLauncher
             };
 
             CurrentApplicationData.LastSession = times.endTime;
+
             SessionsData.Add(sessionData);
             _launcherDatabase.UpdateSessionData(sessionData);
+
+            foreach (var achievementsChecker in AchievementsCheckers)
+            {
+                CurrentApplicationAchievements[achievementsChecker.Value.AchievementID] = AchievementsCheckers[achievementsChecker.Key]
+                    .ValidateAchievement(CurrentApplicationData, SessionsData.ToList());
+            }
+            ViewUpdateReqested?.Invoke();
         }
 
 
@@ -131,6 +161,12 @@ namespace SuperLauncher
 
                 SessionsData.Add(runtimeData);
                 index++;
+            }
+
+            foreach (var achievementsChecker in AchievementsCheckers)
+            {
+                CurrentApplicationAchievements[achievementsChecker.Value.AchievementID] = AchievementsCheckers[achievementsChecker.Key]
+                    .ValidateAchievement(CurrentApplicationData, SessionsData.ToList());
             }
 
             if (SessionsData.Count > 0)
