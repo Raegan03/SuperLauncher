@@ -18,3 +18,9 @@ Mariusz Kaczmarczyk <br>
 
 ### WPF project (v1.0)
 ![Main Window WPF New](Screens/MainWindowWPF_New.png)
+
+### Used libraries
+
+Newtonsoft.Json<br>
+System.Drawing<br>
+docfx

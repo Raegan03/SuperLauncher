@@ -1,0 +1,272 @@
+{
+  "homepages": [],
+  "source_base_path": "D:/_Repos/SuperLuncher/SuperLuncherLibrary",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "0mH7yU9SKTuxICTZDmbKsA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "TyIF0zXLxSGXkwuL7nEttQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "gB8AESyvNru97tzIZofEEg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "zNiXSswBhh0SUL5kzo9b4Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SuperLauncher.Data.ApplicationRuntimeData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SuperLauncher.Data.ApplicationRuntimeData.html",
+          "hash": "8xFJ4b43hG3wXNqx/On5wA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SuperLauncher.Data.ApplicationSerializableData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SuperLauncher.Data.ApplicationSerializableData.html",
+          "hash": "JBCwvIra5dv+t4hGdnyGWw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SuperLauncher.Data.SessionRuntimeData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SuperLauncher.Data.SessionRuntimeData.html",
+          "hash": "3VJ5z3kH2y+S+V1YZq71Mw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SuperLauncher.Data.SessionSerializableData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SuperLauncher.Data.SessionSerializableData.html",
+          "hash": "4k73nDwipemkrlM/1AMXiA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SuperLauncher.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SuperLauncher.Data.html",
+          "hash": "aruI/ceyW6geuidv5dvCtQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SuperLauncher.FirstAchievementChecker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SuperLauncher.FirstAchievementChecker.html",
+          "hash": "FRfLw9o2bFPN7+SQG9Y56Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SuperLauncher.FourAchievementChecker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SuperLauncher.FourAchievementChecker.html",
+          "hash": "aV/sJ+kwg7bsMhiBTBrf5Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SuperLauncher.IAchievementChecker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SuperLauncher.IAchievementChecker.html",
+          "hash": "F2/cBJ+jjGT2vFdasaFYbA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SuperLauncher.SecondAchievementChecker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SuperLauncher.SecondAchievementChecker.html",
+          "hash": "DlBqUBJ1ZTHuZ9TBXUVumA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SuperLauncher.SuperLauncher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SuperLauncher.SuperLauncher.html",
+          "hash": "Ip2GAG0ohNm6kHM5zda7KQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SuperLauncher.ThirdAchievementChecker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SuperLauncher.ThirdAchievementChecker.html",
+          "hash": "PkBNCR5rFr//wbQTPoT2cw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SuperLauncher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SuperLauncher.html",
+          "hash": "kfZve8yqE6jiYC5Y5qoe2Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "obj/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "NnzWzrFdSHd6RPINSiJ0Kg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "G2AoE5T/2VarbHvzLEo4TQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 12,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

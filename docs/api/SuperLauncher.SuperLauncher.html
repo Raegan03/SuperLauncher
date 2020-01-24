@@ -1,0 +1,705 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class SuperLauncher
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class SuperLauncher
+   ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="SuperLauncher.SuperLauncher">
+  
+  
+  <h1 id="SuperLauncher_SuperLauncher" data-uid="SuperLauncher.SuperLauncher" class="text-break">Class SuperLauncher
+  </h1>
+  <div class="markdown level0 summary"><p>Main Library class
+Contains referances to most important parts of Launcher
+Manage all runtime data and processes
+Only class directly connected with WPF which used it for getting and modifing data</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">SuperLauncher</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="SuperLauncher.html">SuperLauncher</a></h6>
+  <h6><strong>Assembly</strong>: SuperLauncher.dll</h6>
+  <h5 id="SuperLauncher_SuperLauncher_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class SuperLauncher</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher__ctor_System_Windows_Threading_Dispatcher_.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher.%23ctor(System.Windows.Threading.Dispatcher)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L44">View Source</a>
+  </span>
+  <a id="SuperLauncher_SuperLauncher__ctor_" data-uid="SuperLauncher.SuperLauncher.#ctor*"></a>
+  <h4 id="SuperLauncher_SuperLauncher__ctor_System_Windows_Threading_Dispatcher_" data-uid="SuperLauncher.SuperLauncher.#ctor(System.Windows.Threading.Dispatcher)">SuperLauncher(Dispatcher)</h4>
+  <div class="markdown level1 summary"><p>Creates database which loads data from saved files, prepares session and achievements
+Tries to select current application if there is any loaded</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SuperLauncher(Dispatcher dispatcher)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Threading.Dispatcher</span></td>
+        <td><span class="parametername">dispatcher</span></td>
+        <td><p>Allows to start WPF connected code from different Thread on UI Thread</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher_AchievementsCheckers.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher.AchievementsCheckers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L32">View Source</a>
+  </span>
+  <h4 id="SuperLauncher_SuperLauncher_AchievementsCheckers" data-uid="SuperLauncher.SuperLauncher.AchievementsCheckers">AchievementsCheckers</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;int, IAchievementChecker&gt; AchievementsCheckers</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="SuperLauncher.IAchievementChecker.html">IAchievementChecker</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher_CurrentApplicationAchievements.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher.CurrentApplicationAchievements%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L31">View Source</a>
+  </span>
+  <h4 id="SuperLauncher_SuperLauncher_CurrentApplicationAchievements" data-uid="SuperLauncher.SuperLauncher.CurrentApplicationAchievements">CurrentApplicationAchievements</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;int, bool&gt; CurrentApplicationAchievements</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher_ApplicationsData.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher.ApplicationsData%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L28">View Source</a>
+  </span>
+  <a id="SuperLauncher_SuperLauncher_ApplicationsData_" data-uid="SuperLauncher.SuperLauncher.ApplicationsData*"></a>
+  <h4 id="SuperLauncher_SuperLauncher_ApplicationsData" data-uid="SuperLauncher.SuperLauncher.ApplicationsData">ApplicationsData</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ObservableCollection&lt;ApplicationRuntimeData&gt; ApplicationsData { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.ObjectModel.ObservableCollection</span>&lt;<a class="xref" href="SuperLauncher.Data.ApplicationRuntimeData.html">ApplicationRuntimeData</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher_CurrentApplicationData.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher.CurrentApplicationData%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L27">View Source</a>
+  </span>
+  <a id="SuperLauncher_SuperLauncher_CurrentApplicationData_" data-uid="SuperLauncher.SuperLauncher.CurrentApplicationData*"></a>
+  <h4 id="SuperLauncher_SuperLauncher_CurrentApplicationData" data-uid="SuperLauncher.SuperLauncher.CurrentApplicationData">CurrentApplicationData</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ApplicationRuntimeData CurrentApplicationData { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SuperLauncher.Data.ApplicationRuntimeData.html">ApplicationRuntimeData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher_IsApplicationsListEmpty.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher.IsApplicationsListEmpty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L24">View Source</a>
+  </span>
+  <a id="SuperLauncher_SuperLauncher_IsApplicationsListEmpty_" data-uid="SuperLauncher.SuperLauncher.IsApplicationsListEmpty*"></a>
+  <h4 id="SuperLauncher_SuperLauncher_IsApplicationsListEmpty" data-uid="SuperLauncher.SuperLauncher.IsApplicationsListEmpty">IsApplicationsListEmpty</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsApplicationsListEmpty { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher_IsSessionsListEmpty.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher.IsSessionsListEmpty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L25">View Source</a>
+  </span>
+  <a id="SuperLauncher_SuperLauncher_IsSessionsListEmpty_" data-uid="SuperLauncher.SuperLauncher.IsSessionsListEmpty*"></a>
+  <h4 id="SuperLauncher_SuperLauncher_IsSessionsListEmpty" data-uid="SuperLauncher.SuperLauncher.IsSessionsListEmpty">IsSessionsListEmpty</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSessionsListEmpty { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher_SessionsData.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher.SessionsData%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L29">View Source</a>
+  </span>
+  <a id="SuperLauncher_SuperLauncher_SessionsData_" data-uid="SuperLauncher.SuperLauncher.SessionsData*"></a>
+  <h4 id="SuperLauncher_SuperLauncher_SessionsData" data-uid="SuperLauncher.SuperLauncher.SessionsData">SessionsData</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ObservableCollection&lt;SessionRuntimeData&gt; SessionsData { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.ObjectModel.ObservableCollection</span>&lt;<a class="xref" href="SuperLauncher.Data.SessionRuntimeData.html">SessionRuntimeData</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher_AddNewApplication_System_String_.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher.AddNewApplication(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L87">View Source</a>
+  </span>
+  <a id="SuperLauncher_SuperLauncher_AddNewApplication_" data-uid="SuperLauncher.SuperLauncher.AddNewApplication*"></a>
+  <h4 id="SuperLauncher_SuperLauncher_AddNewApplication_System_String_" data-uid="SuperLauncher.SuperLauncher.AddNewApplication(System.String)">AddNewApplication(String)</h4>
+  <div class="markdown level1 summary"><p>Based on executable application path it creates application data and saves icon for application
+Application is also automaticaly selected as current</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddNewApplication(string applicationPath)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">applicationPath</span></td>
+        <td><p>Path to application user wants to add</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher_AddNewSession_System_Guid_System_ValueTuple_System_DateTime_System_DateTime__.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher.AddNewSession(System.Guid%2CSystem.ValueTuple%7BSystem.DateTime%2CSystem.DateTime%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L123">View Source</a>
+  </span>
+  <a id="SuperLauncher_SuperLauncher_AddNewSession_" data-uid="SuperLauncher.SuperLauncher.AddNewSession*"></a>
+  <h4 id="SuperLauncher_SuperLauncher_AddNewSession_System_Guid_System_ValueTuple_System_DateTime_System_DateTime__" data-uid="SuperLauncher.SuperLauncher.AddNewSession(System.Guid,System.ValueTuple{System.DateTime,System.DateTime})">AddNewSession(Guid, (DateTime startTime, DateTime endTime))</h4>
+  <div class="markdown level1 summary"><p>Adds new session under current application
+Called on process exit callback
+Revalidate achievements as they are all depended on sessions</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddNewSession(Guid applicationGuid, (DateTime startTime, DateTime endTime) times)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">applicationGuid</span></td>
+        <td><p>Current application guid</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.DateTime</span>, <span class="xref">System.DateTime</span>&gt;</td>
+        <td><span class="parametername">times</span></td>
+        <td><p>Start and End process time</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher_DeleteCurrentApp.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher.DeleteCurrentApp%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L205">View Source</a>
+  </span>
+  <a id="SuperLauncher_SuperLauncher_DeleteCurrentApp_" data-uid="SuperLauncher.SuperLauncher.DeleteCurrentApp*"></a>
+  <h4 id="SuperLauncher_SuperLauncher_DeleteCurrentApp" data-uid="SuperLauncher.SuperLauncher.DeleteCurrentApp">DeleteCurrentApp()</h4>
+  <div class="markdown level1 summary"><p>Delets current application and tries to select new
+If there is no other application we aren&apos;t selecting any</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteCurrentApp()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher_SelectApplication_System_Guid_.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher.SelectApplication(System.Guid)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L152">View Source</a>
+  </span>
+  <a id="SuperLauncher_SuperLauncher_SelectApplication_" data-uid="SuperLauncher.SuperLauncher.SelectApplication*"></a>
+  <h4 id="SuperLauncher_SuperLauncher_SelectApplication_System_Guid_" data-uid="SuperLauncher.SuperLauncher.SelectApplication(System.Guid)">SelectApplication(Guid)</h4>
+  <div class="markdown level1 summary"><p>Selects application as current
+Reloads sessions data and revalidates achievements</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SelectApplication(Guid applicationGuid)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">applicationGuid</span></td>
+        <td><p>Guid of application user wants to select</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher_StartCurrentApplication.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher.StartCurrentApplication%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L239">View Source</a>
+  </span>
+  <a id="SuperLauncher_SuperLauncher_StartCurrentApplication_" data-uid="SuperLauncher.SuperLauncher.StartCurrentApplication*"></a>
+  <h4 id="SuperLauncher_SuperLauncher_StartCurrentApplication" data-uid="SuperLauncher.SuperLauncher.StartCurrentApplication">StartCurrentApplication()</h4>
+  <div class="markdown level1 summary"><p>Starts currently selected application</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StartCurrentApplication()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher_StopCurrentApplication.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher.StopCurrentApplication%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L255">View Source</a>
+  </span>
+  <a id="SuperLauncher_SuperLauncher_StopCurrentApplication_" data-uid="SuperLauncher.SuperLauncher.StopCurrentApplication*"></a>
+  <h4 id="SuperLauncher_SuperLauncher_StopCurrentApplication" data-uid="SuperLauncher.SuperLauncher.StopCurrentApplication">StopCurrentApplication()</h4>
+  <div class="markdown level1 summary"><p>Stops application process if it&apos;s exists</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StopCurrentApplication()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher_UpdateCurrentApplication_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher.UpdateCurrentApplication(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L227">View Source</a>
+  </span>
+  <a id="SuperLauncher_SuperLauncher_UpdateCurrentApplication_" data-uid="SuperLauncher.SuperLauncher.UpdateCurrentApplication*"></a>
+  <h4 id="SuperLauncher_SuperLauncher_UpdateCurrentApplication_System_String_System_String_System_String_" data-uid="SuperLauncher.SuperLauncher.UpdateCurrentApplication(System.String,System.String,System.String)">UpdateCurrentApplication(String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Updates current application with new data passed by user</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateCurrentApplication(string newAppName, string newAppPath, string newAppIconPath)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">newAppName</span></td>
+        <td><p>New name for application</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">newAppPath</span></td>
+        <td><p>New path to application executable</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">newAppIconPath</span></td>
+        <td><p>New path to icon associated with application</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher_ApplicationClosed.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher.ApplicationClosed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L22">View Source</a>
+  </span>
+  <h4 id="SuperLauncher_SuperLauncher_ApplicationClosed" data-uid="SuperLauncher.SuperLauncher.ApplicationClosed">ApplicationClosed</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action ApplicationClosed</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher_ApplicationStarted.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher.ApplicationStarted%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L21">View Source</a>
+  </span>
+  <h4 id="SuperLauncher_SuperLauncher_ApplicationStarted" data-uid="SuperLauncher.SuperLauncher.ApplicationStarted">ApplicationStarted</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action ApplicationStarted</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher_ViewUpdateReqested.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher.ViewUpdateReqested%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L20">View Source</a>
+  </span>
+  <h4 id="SuperLauncher_SuperLauncher_ViewUpdateReqested" data-uid="SuperLauncher.SuperLauncher.ViewUpdateReqested">ViewUpdateReqested</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action ViewUpdateReqested</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Raegan03/SuperLauncher/new/develop/apiSpec/new?filename=SuperLauncher_SuperLauncher.md&amp;value=---%0Auid%3A%20SuperLauncher.SuperLauncher%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Raegan03/SuperLauncher/blob/develop/SuperLuncherLibrary/SuperLauncher.cs/#L18" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
