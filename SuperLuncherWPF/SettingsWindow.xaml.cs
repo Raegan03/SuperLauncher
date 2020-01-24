@@ -20,6 +20,8 @@ namespace SuperLauncherWPF
     /// </summary>
     public partial class SettingsWindow : Window
     {
+        public bool DeleteAppRequested { get; private set; } = false;
+
         public string TemporaryName { get; private set; }
         public string TemporaryAppIconPath { get; private set; }
         public string TemporaryAppPath { get; private set; }
@@ -62,6 +64,26 @@ namespace SuperLauncherWPF
             TemporaryName = AppName_Field.Text;
             TemporaryAppIconPath = AppIconPath_Field.Text;
             TemporaryAppPath = AppPath_Field.Text;
+
+            DialogResult = true;
+            Close();
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this application?", "Application Delete", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    DeleteAppRequested = true;
+                    break;
+                case MessageBoxResult.No:
+                    DeleteAppRequested = false;
+                    break;
+            }
+
+            if (!DeleteAppRequested)
+                return;
 
             DialogResult = true;
             Close();

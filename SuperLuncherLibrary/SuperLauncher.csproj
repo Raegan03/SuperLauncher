@@ -61,7 +61,6 @@
     <Compile Include="SuperLauncher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\ApplicationSerializableData.cs" />
-    <Compile Include="SuperLauncherAchievementsManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

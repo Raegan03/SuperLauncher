@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SuperLauncherWPF"
         mc:Ignorable="d"
-        Title="Super Launcher - Application Settings" WindowStyle="None" MinHeight="400" MinWidth="700" Background="#FF222222" Margin="0" ResizeMode="CanMinimize" AllowsTransparency="False" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" WindowState="Normal" Icon="/Media/Images/Icon.png">
+        Title="Super Launcher - Application Settings" WindowStyle="None" MinHeight="400" MinWidth="700" Background="#FF222222" Margin="0" ResizeMode="CanMinimize" AllowsTransparency="False" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" WindowState="Normal" Icon="/Media/Images/SLIcon.png">
     <Grid>
         <Grid.Resources>
             <Style x:Key="Button" TargetType="Button">
@@ -49,6 +49,9 @@
             <RowDefinition MinHeight="370"/>
         </Grid.RowDefinitions>
         <Grid VerticalAlignment="Top" Background="#FF1D1D1D" MouseDown="WindowDrag">
+            <StackPanel HorizontalAlignment="Left" Margin="0,0,100,0" VerticalAlignment="Center">
+                <Image Source="Media/Images/SLIcon_Small.png" Width="24" Height="24" Margin="5,0,0,0" VerticalAlignment="Top"/>
+            </StackPanel>
             <Label Loaded="Top_Title" HorizontalAlignment="Center" Foreground="White" Padding="0,0,3,0" Background="Transparent" VerticalAlignment="Center" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontFamily="/SuperLuncherWPF;component/Media/Fonts/#Red Hat Display Medium"/>
             <DockPanel>
                 <Button Click="Exit_Click" Style="{StaticResource XButton}">
@@ -62,6 +65,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -88,7 +92,13 @@
                 </Button>
                 <TextBox Name="AppPath_Field" Background="#FF444444" BorderThickness="1" BorderBrush="#FF333333" Text="TestingTest" FlowDirection="LeftToRight" VerticalContentAlignment="Center" Padding="5" Foreground="White" FontFamily="/SuperLauncherWPF;component/Media/Fonts/#Red Hat Display"/>
             </DockPanel>
-            <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" Margin="100,50,100,0" Height="50">
+            <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" Margin="100, 20, 100, 0" Height="50">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Button Click="Delete_Click" Grid.Column="2" Background="#FFC01D1D" BorderBrush="Transparent" FontFamily="/SuperLauncherWPF;component/Media/Fonts/#Red Hat Display Medium" FontSize="20" Foreground="White">Delete Application</Button>
+            </Grid>
+            <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" Margin="100,30,100,0" Height="50">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="50" />
@@ -97,7 +107,6 @@
                 <Button Click="Reset_Click" Background="#FF444444" BorderBrush="#FF333333" FontFamily="/SuperLauncherWPF;component/Media/Fonts/#Red Hat Display Medium" FontSize="20" Foreground="White">Reset</Button>
                 <Button Click="Save_Click" Grid.Column="2" Background="#FF444444" BorderBrush="#FF333333" FontFamily="/SuperLauncherWPF;component/Media/Fonts/#Red Hat Display Medium" FontSize="20" Foreground="White">Save</Button>
             </Grid>
-
         </Grid>
     </Grid>
 </Window>

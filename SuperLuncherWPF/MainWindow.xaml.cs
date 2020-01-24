@@ -78,19 +78,6 @@ namespace SuperLauncherWPF
             Application.Current.Shutdown();
         }
 
-        //private void Fullscreen_Click(object sender, RoutedEventArgs e)
-        //{
-        //    WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
-
-        //    var image = FindLogicalChildren<Image>(sender as DependencyObject)?.FirstOrDefault();
-        //    if (image == null)
-        //        return;
-
-        //    image.Source = WindowState == WindowState.Normal
-        //        ? new BitmapImage(new Uri("/SuperLuncherWPF;component/Media/Images/Fullscreen.png", UriKind.Relative))
-        //        : new BitmapImage(new Uri("/SuperLuncherWPF;component/Media/Images/Normal.png", UriKind.Relative));
-        //}
-
         private void Minimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
@@ -165,6 +152,13 @@ namespace SuperLauncherWPF
             var settingsWindow = new SettingsWindow();
             if(settingsWindow.ShowDialog() == true)
             {
+                if(settingsWindow.DeleteAppRequested)
+                {
+                    app.Launcher.DeleteCurrentApp();
+                    UpdateInfoView();
+                    return;
+                }
+
                 app.Launcher.UpdateCurrentApplication(settingsWindow.TemporaryName,
                     settingsWindow.TemporaryAppPath, settingsWindow.TemporaryAppIconPath);
 

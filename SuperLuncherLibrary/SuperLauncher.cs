@@ -174,6 +174,21 @@ namespace SuperLauncher
                 CurrentApplicationData.LastSession = SessionsData[0].EndSessionDate;
         }
 
+        public void DeleteCurrentApp()
+        {
+            _launcherDatabase.DeleteApplicationData(CurrentApplicationData.AppGUID);
+            ApplicationsData.Remove(CurrentApplicationData);
+
+            if(ApplicationsData.Count > 0)
+            {
+                SelectApplication(ApplicationsData[0].AppGUID);
+            }
+            else
+            {
+                CurrentApplicationData = new ApplicationRuntimeData();
+            }
+        }
+
         public void UpdateCurrentApplication(string newAppName, string newAppPath, string newAppIconPath)
         {
             CurrentApplicationData.AppName = newAppName;

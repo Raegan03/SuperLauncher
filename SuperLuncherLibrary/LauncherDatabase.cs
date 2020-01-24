@@ -62,6 +62,19 @@ namespace SuperLauncher
             SaveAppData();
         }
 
+        public void DeleteApplicationData(Guid applicationGuid)
+        {
+            var sessions = _sessionsData.Where(x => x.AppGUID == applicationGuid).ToList();
+            foreach (var session in sessions)
+            {
+                _sessionsData.Remove(session);
+            }
+
+            _applicationsData.RemoveAll(x => x.AppGUID == applicationGuid);
+
+            SaveAppData();
+        }
+
         public void UpdateApplicationData(ApplicationRuntimeData applicationData)
         {
             var appData = _applicationsData.Find(x => x.AppGUID == applicationData.AppGUID);
