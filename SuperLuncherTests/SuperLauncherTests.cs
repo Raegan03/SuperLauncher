@@ -105,5 +105,44 @@ namespace SuperLauncherTests
             Assert.IsTrue(third.ValidateAchievement(null, sessions));
             Assert.IsTrue(four.ValidateAchievement(null, sessions));
         }
+
+        [TestMethod]
+        public void Test_SuperLaucher_SessionTest()
+        {
+            var session = new SessionSerializableData()
+            {
+                StartSessionDate = DateTime.Now,
+                EndSessionDate = DateTime.Now.AddMinutes(37)
+            };
+
+            Assert.AreEqual((int)(session.EndSessionDate - session.StartSessionDate).TotalMinutes, 37);
+
+            var runtimeSession = new SessionRuntimeData(session);
+
+            Assert.AreEqual(runtimeSession.StartSessionDate, session.StartSessionDate);
+            Assert.AreEqual(runtimeSession.EndSessionDate, session.EndSessionDate);
+
+            Assert.AreEqual(runtimeSession.TotalDurationMinutes, 37);
+        }
+
+        [TestMethod]
+        public void Test_SuperLaucher_ApplicationTest()
+        {
+            var app = new ApplicationSerializableData()
+            {
+                AppGUID = Guid.NewGuid(),
+                AppExecutablePath = "path_exe",
+                AppIconPath = "icon_path_exe",
+                AppName = "name"
+            };
+
+
+            var runtimeApp = new ApplicationRuntimeData(app);
+
+            Assert.AreEqual(runtimeApp.AppGUID, app.AppGUID);
+            Assert.AreEqual(runtimeApp.AppExecutablePath, app.AppExecutablePath);
+            Assert.AreEqual(runtimeApp.AppIconPath, app.AppIconPath);
+            Assert.AreEqual(runtimeApp.AppName, app.AppName);
+        }
     }
 }
