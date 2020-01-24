@@ -15,3 +15,6 @@ Mariusz Kaczmarczyk <br>
 
 ### WPF project (prototype)
 ![Main Window WPF](Screens/MainWindowWPF_fix.png)
+
+### WPF project (v1.0)
+![Main Window WPF New](Screens/MainWindowWPF_New.png)
