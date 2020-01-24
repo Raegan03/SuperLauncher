@@ -53,6 +53,9 @@
     <StartupObject>
     </StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>SLIcon2.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -162,9 +165,6 @@
     <Resource Include="Media\Images\Hamburger.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\Images\icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\SuperLuncherLibrary\SuperLauncher.csproj">
       <Project>{021e4177-4592-4b48-9595-df09ea6b94b3}</Project>
       <Name>SuperLauncher</Name>
@@ -181,6 +181,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Media\Images\SettingsIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\Images\SLIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SLIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SLIcon2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="Media\Images\splashScreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\Images\SLIcon_Small.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
