@@ -16,6 +16,8 @@ namespace SuperLauncher
     public class SuperLauncher
     {
         public event Action ViewUpdateReqested;
+        public event Action ApplicationStarted;
+        public event Action ApplicationClosed;
 
         public bool IsApplicationsListEmpty => ApplicationsData.Count == 0;
         public bool IsSessionsListEmpty => SessionsData.Count == 0;
@@ -190,11 +192,26 @@ namespace SuperLauncher
 
             _currentProcess = new ApplicationProcess(CurrentApplicationData.AppGUID, 
                 CurrentApplicationData.AppExecutablePath, ProcessSessionFeedback);
+
+            ApplicationStarted?.Invoke();
+        }
+
+        public void StopCurrentApplication()
+        {
+            if (_currentProcess != null)
+            {
+                _currentProcess.Stop();
+                _currentProcess = null;
+            }
         }
 
         private void ProcessSessionFeedback(Guid applicationGuid, (DateTime processStart, DateTime processEnd) times)
         {
-            _dispatcher.Invoke(() => AddNewSession(applicationGuid, times));
+            _dispatcher.Invoke(() => 
+            {
+                AddNewSession(applicationGuid, times);
+                ApplicationClosed?.Invoke();
+            });
         }
     }
 }

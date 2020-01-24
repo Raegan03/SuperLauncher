@@ -32,6 +32,8 @@ namespace SuperLauncherWPF
             var app = Application.Current as App;
             applicationsList.ItemsSource = app.Launcher.ApplicationsData;
 
+            RunningApp.Visibility = Visibility.Hidden;
+
             bool noApp = app.Launcher.IsApplicationsListEmpty;
             CoverPanel.Visibility = noApp ? Visibility.Visible : Visibility.Hidden;
             WebBrowser.Visibility = noApp ? Visibility.Hidden : Visibility.Visible;
@@ -41,6 +43,24 @@ namespace SuperLauncherWPF
             UpdateInfoView();
 
             app.Launcher.ViewUpdateReqested += Launcher_ViewUpdateReqested;
+            app.Launcher.ApplicationStarted += Launcher_ApplicationStarted;
+            app.Launcher.ApplicationClosed += Launcher_ApplicationClosed;
+        }
+
+        private void Launcher_ApplicationClosed()
+        {
+            RunningApp.Visibility = Visibility.Hidden;
+            WebBrowser.Visibility = Visibility.Visible;
+        }
+
+        private void Launcher_ApplicationStarted()
+        {
+            var app = Application.Current as App;
+            RunningApp.Visibility = Visibility.Visible;
+            WebBrowser.Visibility = Visibility.Hidden;
+
+            RuningAppLabel.Content = $"{app.Launcher.CurrentApplicationData.AppName} is running...";
+            RuningAppButton.Content = $"Stop {app.Launcher.CurrentApplicationData.AppName}";
         }
 
         private void Launcher_ViewUpdateReqested()
@@ -189,6 +209,12 @@ namespace SuperLauncherWPF
                 : "/SuperLauncherWPF;component/Media/Images/Achievement_Lock.png", UriKind.Relative);
             Ach_4_Img.Source = new BitmapImage(Ach_4_Uri);
             Ach_4_Label.Content = ach4 ? "Old pal" : "???";
+        }
+
+        private void RuningAppButton_Click(object sender, RoutedEventArgs e)
+        {
+            var app = Application.Current as App;
+            app.Launcher.StopCurrentApplication();
         }
     }
 }

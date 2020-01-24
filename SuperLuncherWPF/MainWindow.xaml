@@ -102,7 +102,6 @@
                 </Button>
             </DockPanel>
         </Grid>
-
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -246,5 +245,12 @@
                 <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/SuperLauncherWPF;component/Media/Fonts/#Red Hat Display Medium" FontSize="48" Foreground="White">No applications found</Label>
             </DockPanel>
         </Grid>
+        <DockPanel Grid.Row="1" Background="#88000000" Name="RunningApp" Visibility="Hidden">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Label Name="RuningAppLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/SuperLauncherWPF;component/Media/Fonts/#Red Hat Display Medium" FontSize="64" Foreground="White">X application is running...
+                </Label>
+                <Button Click="RuningAppButton_Click" MaxWidth="300" Name="RuningAppButton" Margin="0, 40, 0, 0" Height="50" Background="#FF222222" Padding="0" BorderThickness="0" Foreground="White"/>
+            </StackPanel>
+        </DockPanel>
     </Grid>
 </Window>
