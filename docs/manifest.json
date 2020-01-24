@@ -12,7 +12,7 @@
           "hash": "0mH7yU9SKTuxICTZDmbKsA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -24,7 +24,7 @@
           "hash": "TyIF0zXLxSGXkwuL7nEttQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -48,7 +48,7 @@
           "hash": "zNiXSswBhh0SUL5kzo9b4Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -57,10 +57,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SuperLauncher.Data.ApplicationRuntimeData.html",
-          "hash": "8xFJ4b43hG3wXNqx/On5wA=="
+          "hash": "RDanM9qOQU5LfJEPLGZImA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -69,10 +69,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SuperLauncher.Data.ApplicationSerializableData.html",
-          "hash": "JBCwvIra5dv+t4hGdnyGWw=="
+          "hash": "SND7IEM9mpistG5DACPPXw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -81,10 +81,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SuperLauncher.Data.SessionRuntimeData.html",
-          "hash": "3VJ5z3kH2y+S+V1YZq71Mw=="
+          "hash": "WSAK6D3nCf5HKg9docQG3Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -93,10 +93,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SuperLauncher.Data.SessionSerializableData.html",
-          "hash": "4k73nDwipemkrlM/1AMXiA=="
+          "hash": "QI25JHYXGFlY/2HvONodQA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -108,7 +108,7 @@
           "hash": "aruI/ceyW6geuidv5dvCtQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -117,10 +117,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SuperLauncher.FirstAchievementChecker.html",
-          "hash": "FRfLw9o2bFPN7+SQG9Y56Q=="
+          "hash": "wpvWre+STGRcgiiW+P5lgw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -129,10 +129,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SuperLauncher.FourAchievementChecker.html",
-          "hash": "aV/sJ+kwg7bsMhiBTBrf5Q=="
+          "hash": "xIRz1cl4SLUBm/UxMLDSPw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -141,10 +141,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SuperLauncher.IAchievementChecker.html",
-          "hash": "F2/cBJ+jjGT2vFdasaFYbA=="
+          "hash": "seBPbyBoZHaTUC7gjpWb7Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -153,10 +153,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SuperLauncher.SecondAchievementChecker.html",
-          "hash": "DlBqUBJ1ZTHuZ9TBXUVumA=="
+          "hash": "dTjHjaLeFbSQkfsm/ptyLg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -165,10 +165,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SuperLauncher.SuperLauncher.html",
-          "hash": "Ip2GAG0ohNm6kHM5zda7KQ=="
+          "hash": "gawomJDHR0hrm1UGHohgNA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -177,10 +177,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SuperLauncher.ThirdAchievementChecker.html",
-          "hash": "PkBNCR5rFr//wbQTPoT2cw=="
+          "hash": "tLYHEP0FzXCvIUZjWZyNGg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -192,7 +192,7 @@
           "hash": "kfZve8yqE6jiYC5Y5qoe2Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -223,39 +223,37 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot build incrementally because last build info is missing.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "NoAvailableBuildCache"
+        "skipped_file_count": 0
       },
       "processors": {
-        "ConceptualDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build",
-          "total_file_count": 3,
-          "skipped_file_count": 0
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build",
-          "total_file_count": 12,
-          "skipped_file_count": 0
-        },
         "TocDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build",
           "total_file_count": 0,
           "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 12,
+          "skipped_file_count": 12
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 3
         }
       }
     },
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0
