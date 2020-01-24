@@ -214,10 +214,10 @@
     <Resource Include="SLIcon2.ico" />
   </ItemGroup>
   <ItemGroup>
-    <SplashScreen Include="Media\Images\splashScreen.png" />
+    <Resource Include="Media\Images\SLIcon_Small.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\Images\SLIcon_Small.png" />
+    <SplashScreen Include="Media\Images\splashScreen_new.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
